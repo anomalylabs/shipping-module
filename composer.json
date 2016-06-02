@@ -1,0 +1,9 @@
+{
+    "name": "anomaly/shipping-module",
+    "type": "streams-addon",
+    "autoload": {
+        "psr-4": {
+            "Anomaly\\ShippingModule\\": "src/"
+        }
+    }
+}
