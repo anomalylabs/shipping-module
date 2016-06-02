@@ -2,29 +2,36 @@
 
 use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
 
+/**
+ * Class RateTableBuilder
+ *
+ * @link          http://pyrocms.com/
+ * @author        PyroCMS, Inc. <support@pyrocms.com>
+ * @author        Ryan Thompson <ryan@pyrocms.com>
+ * @package       Anomaly\ShippingModule\Rate\Table
+ */
 class RateTableBuilder extends TableBuilder
 {
-
-    /**
-     * The table views.
-     *
-     * @var array|string
-     */
-    protected $views = [];
 
     /**
      * The table filters.
      *
      * @var array|string
      */
-    protected $filters = [];
+    protected $filters = [
+        'name',
+        'zone'
+    ];
 
     /**
      * The table columns.
      *
      * @var array|string
      */
-    protected $columns = [];
+    protected $columns = [
+        'name',
+        'zone',
+    ];
 
     /**
      * The table buttons.

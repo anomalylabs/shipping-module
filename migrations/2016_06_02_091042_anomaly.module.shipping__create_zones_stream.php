@@ -18,7 +18,8 @@ class AnomalyModuleShippingCreateZonesStream extends Migration
      * @var array
      */
     protected $stream = [
-        'slug' => 'zones'
+        'slug'         => 'zones',
+        'title_column' => 'name'
     ];
 
     /**
