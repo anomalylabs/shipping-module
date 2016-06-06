@@ -68,7 +68,7 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
         'max_unit'    => [
             'type'   => 'anomaly.field_type.decimal',
             'config' => [
-                'min'      => 1,
+                'min'      => 0,
                 'decimals' => 2
             ]
         ],
