@@ -1,5 +1,9 @@
 <?php namespace Anomaly\ShippingModule\Http\Controller\Admin;
 
+use Anomaly\ShippingModule\Carrier\CarrierExtension;
+use Anomaly\ShippingModule\Rate\Contract\RateInterface;
+use Anomaly\ShippingModule\Rate\Contract\RateRepositoryInterface;
+use Anomaly\ShippingModule\Rate\Form\RateCarrierFormBuilder;
 use Anomaly\ShippingModule\Rate\Form\RateFormBuilder;
 use Anomaly\ShippingModule\Rate\Table\RateTableBuilder;
 use Anomaly\Streams\Platform\Addon\Extension\ExtensionCollection;
@@ -43,28 +47,41 @@ class RatesController extends AdminController
     /**
      * Create a new entry.
      *
-     * @param RateFormBuilder     $form
-     * @param ExtensionCollection $extensions
+     * @param RateCarrierFormBuilder $form
+     * @param RateFormBuilder        $rate
+     * @param ExtensionCollection    $extensions
      * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
      */
-    public function create(RateFormBuilder $form, ExtensionCollection $extensions)
+    public function create(RateCarrierFormBuilder $form, RateFormBuilder $rate, ExtensionCollection $extensions)
     {
+        /* @var CarrierExtension $carrier */
         $carrier = $extensions->get($this->request->get('carrier'));
 
-        return $form
-            ->setCarrier($carrier)
-            ->render();
+        $form->addForm('rate', $rate->setCarrier($carrier));
+
+        $carrier->integrate($form);
+
+        return $form->render();
     }
 
     /**
      * Edit an existing entry.
      *
-     * @param RateFormBuilder $form
-     * @param                 $id
+     * @param RateCarrierFormBuilder $form
+     * @param RateFormBuilder        $rate
+     * @param                        $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function edit(RateFormBuilder $form, $id)
+    public function edit(RateCarrierFormBuilder $form, RateFormBuilder $rate, RateRepositoryInterface $rates, $id)
     {
-        return $form->render($id);
+        /* @var RateInterface $entry */
+        $entry = $rates->find($id);
+
+        $form->addForm('rate', $rate->setEntry($entry)->setCarrier($carrier = $entry->getCarrier()));
+
+        $carrier->integrate($form);
+
+        return $form->render();
     }
 }

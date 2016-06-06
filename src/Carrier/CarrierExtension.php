@@ -3,6 +3,7 @@
 use Anomaly\ShippingModule\Carrier\Contract\CarrierInterface;
 use Anomaly\ShippingModule\Carrier\Contract\Shippable;
 use Anomaly\ShippingModule\Rate\Contract\RateInterface;
+use Anomaly\ShippingModule\Rate\Form\RateCarrierFormBuilder;
 use Anomaly\Streams\Platform\Addon\Extension\Extension;
 
 /**
@@ -22,6 +23,16 @@ class CarrierExtension extends Extension implements CarrierInterface
      * @var RateInterface
      */
     protected $rate;
+
+    /**
+     * Integrate into the rate carrier form.
+     *
+     * @param RateCarrierFormBuilder $builder
+     */
+    public function integrate(RateCarrierFormBuilder $builder)
+    {
+        throw new \Exception('Your carrier extension must provide a valid integrate method.');
+    }
 
     /**
      * Get the price.

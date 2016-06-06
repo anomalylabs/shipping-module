@@ -37,7 +37,7 @@ class AnomalyModuleShippingCreateRatesStream extends Migration
             'required' => true,
         ],
         'free',
-        'condition' => [
+        'rate' => [
             'required' => true,
         ],
         'min_unit',

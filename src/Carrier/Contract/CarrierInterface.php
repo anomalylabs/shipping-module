@@ -8,6 +8,8 @@
  * @author        Ryan Thompson <ryan@pyrocms.com>
  * @package       Anomaly\ShippingModule\Carrier\Contract
  */
+use Anomaly\ShippingModule\Rate\Form\RateCarrierFormBuilder;
+
 /**
  * Interface CarrierInterface
  *
@@ -18,6 +20,13 @@
  */
 interface CarrierInterface
 {
+
+    /**
+     * Integrate into the rate carrier form.
+     *
+     * @param RateCarrierFormBuilder $builder
+     */
+    public function integrate(RateCarrierFormBuilder $builder);
 
     /**
      * Get the price.

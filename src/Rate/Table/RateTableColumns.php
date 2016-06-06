@@ -24,6 +24,7 @@ class RateTableColumns
     {
         $currency = $config->get('streams::currencies.default');
         $symbol   = $config->get('streams::currencies.supported.' . $currency . '.symbol');
+        $unit     = $config->get('streams::system.unit_system') == 'imperial' ? 'lbs' : 'kgs';
 
         $builder->setColumns(
             [
@@ -31,14 +32,14 @@ class RateTableColumns
                 'zone',
                 'entry.carrier.title',
                 'condition' => [
-                    'value' => function (RateInterface $entry) use ($symbol, $currency) {
+                    'value' => function (RateInterface $entry) use ($symbol, $currency, $unit) {
 
                         $type = $entry->getType();
                         $min  = $entry->getMinUnit();
                         $max  = $entry->getMaxUnit();
 
                         $prefix = $type == 'price' ? $symbol : null;
-                        $suffix = $type == 'price' ? $currency : 'lbs';
+                        $suffix = $type == 'price' ? $currency : $unit;
 
                         return $prefix . $min . ' - ' . $prefix . $max . ' ' . $suffix;
                     }

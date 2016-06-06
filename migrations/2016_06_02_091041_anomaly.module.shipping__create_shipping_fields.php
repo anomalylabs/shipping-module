@@ -40,21 +40,14 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
                 'handler' => 'states'
             ]
         ],
-        'free'        => [
-            'type'   => 'anomaly.field_type.boolean',
-            'config' => [
-                'mode'  => 'checkbox',
-                'label' => 'anomaly.module.shipping::field.free.option',
-            ]
-        ],
         'rate'        => [
             'type'   => 'anomaly.field_type.select',
             'config' => [
                 'mode'          => 'radio',
                 'default_value' => 'price',
                 'options'       => [
-                    'price'  => 'anomaly.module.shipping::field.type.option.price',
-                    'weight' => 'anomaly.module.shipping::field.type.option.weight',
+                    'price'  => 'anomaly.module.shipping::field.rate.option.price',
+                    'weight' => 'anomaly.module.shipping::field.rate.option.weight',
                 ]
             ]
         ],
