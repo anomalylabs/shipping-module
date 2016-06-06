@@ -24,16 +24,6 @@ class RateTableBuilder extends TableBuilder
     ];
 
     /**
-     * The table columns.
-     *
-     * @var array|string
-     */
-    protected $columns = [
-        'name',
-        'zone',
-    ];
-
-    /**
      * The table buttons.
      *
      * @var array|string

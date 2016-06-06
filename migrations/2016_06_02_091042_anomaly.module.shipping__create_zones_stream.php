@@ -19,7 +19,8 @@ class AnomalyModuleShippingCreateZonesStream extends Migration
      */
     protected $stream = [
         'slug'         => 'zones',
-        'title_column' => 'name'
+        'title_column' => 'name',
+        'translatable' => true
     ];
 
     /**
@@ -28,12 +29,15 @@ class AnomalyModuleShippingCreateZonesStream extends Migration
      * @var array
      */
     protected $assignments = [
-        'name'    => [
-            'required' => true,
-            'unique'   => true,
+        'name'        => [
+            'unique'       => true,
+            'required'     => true,
+            'translatable' => true,
         ],
-        'description',
-        'country' => [
+        'description' => [
+            'translatable' => true,
+        ],
+        'country'     => [
             'required' => true,
         ],
         'states'

@@ -29,11 +29,22 @@ class AnomalyModuleShippingCreateRatesStream extends Migration
      * @var array
      */
     protected $assignments = [
-        'name' => [
+        'name'     => [
             'required'     => true,
             'translatable' => true,
         ],
-        'zone' => [
+        'zone'     => [
+            'required' => true,
+        ],
+        'free',
+        'type'     => [
+            'required' => true,
+        ],
+        'min_unit' => [
+            'required' => true,
+        ],
+        'max_unit',
+        'price'    => [
             'required' => true,
         ],
     ];
