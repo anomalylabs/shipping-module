@@ -24,6 +24,12 @@ return [
         'label'        => 'Shipping Zone',
         'instructions' => 'Specify the shipping zone this rate applies to.'
     ],
+    'free'        => [
+        'name'         => 'Free Shipping',
+        'instructions' => 'Is this shipping rate free?',
+        'warning'      => 'If enabled, the <strong>Shipping Price</strong> will be ignored.',
+        'option'       => 'Yes, this is shipping rate is free.'
+    ],
     'rate'        => [
         'name'         => 'Shipping Rate',
         'instructions' => 'Specify how this shipping rate is applied.',
