@@ -47,7 +47,7 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
                 'label' => 'anomaly.module.shipping::field.free.option',
             ]
         ],
-        'type'        => [
+        'rate'        => [
             'type'   => 'anomaly.field_type.select',
             'config' => [
                 'mode'          => 'radio',
@@ -72,11 +72,41 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
                 'decimals' => 2
             ]
         ],
-        'price'       => [
-            'type'   => 'anomaly.field_type.decimal',
+        'carrier'     => [
+            'type'   => 'anomaly.field_type.addon',
             'config' => [
-                'min'      => 1,
-                'decimals' => 2
+                'type'          => 'extension',
+                'search'        => 'anomaly.module.shipping::carrier.*',
+                'default_value' => 'anomaly.extension.generic_shipping_carrier'
+            ]
+        ],
+        'length'      => [
+            'type' => 'anomaly.field_type.decimal',
+        ],
+        'width'       => [
+            'type' => 'anomaly.field_type.decimal',
+        ],
+        'height'      => [
+            'type' => 'anomaly.field_type.decimal',
+        ],
+        'weight'      => [
+            'type' => 'anomaly.field_type.decimal',
+        ],
+        'default'     => [
+            'type'   => 'anomaly.field_type.boolean',
+            'config' => [
+                'mode'  => 'checkbox',
+                'label' => 'anomaly.module.shipping::field.default.option',
+            ]
+        ],
+        'type'        => [
+            'type'   => 'anomaly.field_type.select',
+            'config' => [
+                'default_value' => 'package',
+                'options'       => [
+                    'package'  => 'anomaly.module.shipping::field.type.option.package',
+                    'envelope' => 'anomaly.module.shipping::field.type.option.envelope',
+                ]
             ]
         ],
     ];

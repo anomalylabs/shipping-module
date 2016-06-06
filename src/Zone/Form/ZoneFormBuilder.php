@@ -54,18 +54,6 @@ class ZoneFormBuilder extends FormBuilder
     }
 
     /**
-     * Fired just before saving.
-     */
-    public function onSaving()
-    {
-        $zone = $this->getFormEntry();
-
-        if ($country = $this->getCountry()) {
-            $zone->setAttribute('country', $country);
-        }
-    }
-
-    /**
      * Get the country.
      *
      * @return null|string
@@ -86,5 +74,17 @@ class ZoneFormBuilder extends FormBuilder
         $this->country = $country;
 
         return $this;
+    }
+
+    /**
+     * Fired just before saving.
+     */
+    public function onSaving()
+    {
+        $zone = $this->getFormEntry();
+
+        if ($country = $this->getCountry()) {
+            $zone->setAttribute('country', $country);
+        }
     }
 }

@@ -28,16 +28,25 @@ class ShippingModule extends Module
     protected $sections = [
         'rates' => [
             'buttons' => [
-                'add_rate'
+                'add_rate' => [
+                    'data-toggle' => 'modal',
+                    'data-target' => '#modal',
+                    'href'        => 'admin/shipping/choose'
+                ]
             ]
         ],
-        'zones' => [
+        'zones'    => [
             'buttons' => [
                 'new_zone' => [
                     'data-toggle' => 'modal',
                     'data-target' => '#modal',
                     'href'        => 'admin/shipping/zones/choose'
                 ]
+            ]
+        ],
+        'packages' => [
+            'buttons' => [
+                'new_package'
             ]
         ]
     ];

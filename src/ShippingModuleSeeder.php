@@ -1,5 +1,6 @@
 <?php namespace Anomaly\ShippingModule;
 
+use Anomaly\ShippingModule\Package\PackageSeeder;
 use Anomaly\ShippingModule\Zone\ZoneSeeder;
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;
 
@@ -20,5 +21,6 @@ class ShippingModuleSeeder extends Seeder
     public function run()
     {
         $this->call(ZoneSeeder::class);
+        $this->call(PackageSeeder::class);
     }
 }

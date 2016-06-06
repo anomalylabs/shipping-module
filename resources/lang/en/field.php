@@ -22,7 +22,7 @@ return [
         'warning'      => 'If enabled, the <strong>Shipping Rate</strong> will be ignored.',
         'option'       => 'Yes, this is shipping rate is free.'
     ],
-    'type'        => [
+    'rate'        => [
         'name'         => 'Shipping Rate',
         'instructions' => 'Specify how this shipping rate is calculated.',
         'option'       => [
@@ -44,5 +44,30 @@ return [
     'price'       => [
         'name'         => 'Shipping Cost',
         'instructions' => 'Specify the shipping cost.',
+    ],
+    'carrier'     => [
+        'name' => 'Carrier',
+    ],
+    'height'      => [
+        'name' => 'Height',
+    ],
+    'width'       => [
+        'name' => 'Width',
+    ],
+    'length'      => [
+        'name' => 'Length',
+    ],
+    'type'        => [
+        'name'         => 'Package Type',
+        'instructions' => 'Specify how this shipping rate is calculated.',
+        'option'       => [
+            'package'  => 'Package',
+            'envelope' => 'Envelope',
+        ]
+    ],
+    'default'     => [
+        'name'         => 'Default Package',
+        'instructions' => 'This package size will be used to calculate shipping rates at checkout.',
+        'option'       => 'Set as the default package.'
     ],
 ];

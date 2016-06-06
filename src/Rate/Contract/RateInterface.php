@@ -1,5 +1,6 @@
 <?php namespace Anomaly\ShippingModule\Rate\Contract;
 
+use Anomaly\ShippingModule\Carrier\CarrierExtension;
 use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
 
 /**
@@ -26,6 +27,13 @@ interface RateInterface extends EntryInterface
      * @return float
      */
     public function getPrice();
+
+    /**
+     * Get the carrier.
+     *
+     * @return CarrierExtension
+     */
+    public function getCarrier();
 
     /**
      * Get the minimum unit.

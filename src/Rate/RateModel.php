@@ -1,5 +1,6 @@
 <?php namespace Anomaly\ShippingModule\Rate;
 
+use Anomaly\ShippingModule\Carrier\CarrierExtension;
 use Anomaly\ShippingModule\Rate\Contract\RateInterface;
 use Anomaly\Streams\Platform\Model\Shipping\ShippingRatesEntryModel;
 
@@ -32,6 +33,16 @@ class RateModel extends ShippingRatesEntryModel implements RateInterface
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * Get the carrier.
+     *
+     * @return CarrierExtension
+     */
+    public function getCarrier()
+    {
+        return $this->carrier;
     }
 
     /**

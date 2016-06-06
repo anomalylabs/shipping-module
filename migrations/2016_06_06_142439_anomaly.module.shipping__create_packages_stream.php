@@ -3,13 +3,13 @@
 use Anomaly\Streams\Platform\Database\Migration\Migration;
 
 /**
- * Class AnomalyModuleShippingCreateRatesStream
+ * Class AnomalyModuleShippingCreatePackagesStream
  *
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
  */
-class AnomalyModuleShippingCreateRatesStream extends Migration
+class AnomalyModuleShippingCreatePackagesStream extends Migration
 {
 
     /**
@@ -18,9 +18,10 @@ class AnomalyModuleShippingCreateRatesStream extends Migration
      * @var array
      */
     protected $stream = [
-        'slug'         => 'rates',
+        'slug'         => 'packages',
         'title_column' => 'name',
-        'translatable' => true
+        'translatable' => true,
+        'sortable'     => true,
     ];
 
     /**
@@ -29,25 +30,25 @@ class AnomalyModuleShippingCreateRatesStream extends Migration
      * @var array
      */
     protected $assignments = [
-        'name'      => [
+        'name'   => [
+            'unique'       => true,
             'required'     => true,
             'translatable' => true,
         ],
-        'zone'      => [
+        'type'   => [
             'required' => true,
         ],
-        'free',
-        'condition' => [
+        'length' => [
             'required' => true,
         ],
-        'min_unit',
-        'max_unit',
-        'price'     => [
+        'width'  => [
             'required' => true,
         ],
-        'carrier'   => [
+        'height' => [
             'required' => true,
         ],
+        'weight',
+        'default',
     ];
 
 }

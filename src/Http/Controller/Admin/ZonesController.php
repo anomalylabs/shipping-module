@@ -38,7 +38,7 @@ class ZonesController extends AdminController
         $common    = $config->get('streams::countries.common');
         $countries = $config->get('streams::countries.available');
 
-        return $this->view->make('module::ajax/choose_country', compact('common', 'countries'));
+        return $this->view->make('module::admin/zones/choose', compact('common', 'countries'));
     }
 
     /**

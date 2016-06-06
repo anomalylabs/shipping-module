@@ -29,6 +29,7 @@ class RateTableColumns
             [
                 'name',
                 'zone',
+                'entry.carrier.title',
                 'condition' => [
                     'value' => function (RateInterface $entry) use ($symbol, $currency) {
 
@@ -42,11 +43,6 @@ class RateTableColumns
                         return $prefix . $min . ' - ' . $prefix . $max . ' ' . $suffix;
                     }
                 ],
-                'price'     => [
-                    'value' => function (RateInterface $entry) use ($symbol, $currency) {
-                        return $symbol . $entry->getPrice() . ' ' . $currency;
-                    }
-                ]
             ]
         );
     }

@@ -1,57 +1,67 @@
 <?php namespace Anomaly\ShippingModule\Rate\Form;
 
+use Anomaly\ShippingModule\Carrier\CarrierExtension;
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
 
+/**
+ * Class RateFormBuilder
+ *
+ * @link          http://pyrocms.com/
+ * @author        PyroCMS, Inc. <support@pyrocms.com>
+ * @author        Ryan Thompson <ryan@pyrocms.com>
+ * @package       Anomaly\ShippingModule\Rate\Form
+ */
 class RateFormBuilder extends FormBuilder
 {
 
     /**
-     * The form fields.
+     * The carrier extension.
      *
-     * @var array|string
+     * @var null|CarrierExtension
      */
-    protected $fields = [];
+    protected $carrier = null;
 
     /**
-     * Fields to skip.
-     *
-     * @var array|string
-     */
-    protected $skips = [];
-
-    /**
-     * The form actions.
-     *
-     * @var array|string
-     */
-    protected $actions = [];
-
-    /**
-     * The form buttons.
-     *
-     * @var array|string
-     */
-    protected $buttons = [];
-
-    /**
-     * The form options.
+     * The skipped fields.
      *
      * @var array
      */
-    protected $options = [];
+    protected $skips = [
+        'carrier'
+    ];
 
     /**
-     * The form sections.
-     *
-     * @var array
+     * Fired just before saving.
      */
-    protected $sections = [];
+    public function onSaving()
+    {
+        $rate = $this->getFormEntry();
+
+        if ($carrier = $this->getCarrier()) {
+            $rate->setAttribute('carrier', $carrier);
+        }
+    }
 
     /**
-     * The form assets.
+     * Get the carrier.
      *
-     * @var array
+     * @return CarrierExtension|null
      */
-    protected $assets = [];
+    public function getCarrier()
+    {
+        return $this->carrier;
+    }
 
+    /**
+     * Set the carrier extension.
+     *
+     * @param CarrierExtension $carrier
+     * @return $this
+     */
+    public function setCarrier(CarrierExtension $carrier)
+    {
+        $this->carrier = $carrier;
+
+        return $this;
+    }
 }
