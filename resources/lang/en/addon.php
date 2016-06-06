@@ -3,5 +3,5 @@
 return [
     'title'       => 'Shipping',
     'name'        => 'Shipping Module',
-    'description' => ''
+    'description' => 'Manage the shipping rates for regions and countries that you ship to.'
 ];
