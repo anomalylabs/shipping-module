@@ -20,7 +20,8 @@ class AnomalyModuleShippingCreateRatesStream extends Migration
     protected $stream = [
         'slug'         => 'rates',
         'title_column' => 'name',
-        'translatable' => true
+        'translatable' => true,
+        'sortable'     => true,
     ];
 
     /**
@@ -29,20 +30,20 @@ class AnomalyModuleShippingCreateRatesStream extends Migration
      * @var array
      */
     protected $assignments = [
-        'name'      => [
+        'name'    => [
             'required'     => true,
             'translatable' => true,
         ],
-        'zone'      => [
+        'zone'    => [
             'required' => true,
         ],
         'free',
-        'rate' => [
+        'rate'    => [
             'required' => true,
         ],
         'min_unit',
         'max_unit',
-        'carrier'   => [
+        'carrier' => [
             'required' => true,
         ],
     ];
