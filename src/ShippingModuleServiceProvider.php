@@ -1,6 +1,8 @@
 <?php namespace Anomaly\ShippingModule;
 
+use Anomaly\ShippingModule\Rate\RateModel;
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
+use Anomaly\Streams\Platform\Model\Shipping\ShippingRatesEntryModel;
 
 /**
  * Class ShippingModuleServiceProvider
@@ -12,6 +14,15 @@ use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
  */
 class ShippingModuleServiceProvider extends AddonServiceProvider
 {
+
+    /**
+     * The addon bindings.
+     *
+     * @var array
+     */
+    protected $bindings = [
+        ShippingRatesEntryModel::class => RateModel::class
+    ];
 
     /**
      * The addon singletons.

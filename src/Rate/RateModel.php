@@ -42,7 +42,7 @@ class RateModel extends ShippingRatesEntryModel implements RateInterface
      */
     public function getCarrier()
     {
-        return $this->carrier;
+        return $this->carrier->setRate($this);
     }
 
     /**
