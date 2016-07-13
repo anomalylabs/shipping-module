@@ -109,6 +109,12 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
                 ]
             ]
         ],
+        'tax'         => [
+            'type'   => 'anomaly.field_type.relationship',
+            'config' => [
+                'related' => 'Anomaly\TaxesModule\Tax\TaxModel',
+            ]
+        ],
     ];
 
 }

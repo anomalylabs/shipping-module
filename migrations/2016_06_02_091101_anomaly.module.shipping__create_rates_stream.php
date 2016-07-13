@@ -46,6 +46,9 @@ class AnomalyModuleShippingCreateRatesStream extends Migration
         'carrier' => [
             'required' => true,
         ],
+        'tax'     => [
+            'required' => true,
+        ],
     ];
 
 }
