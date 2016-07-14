@@ -18,101 +18,48 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
      * @var array
      */
     protected $fields = [
-        'name'        => 'anomaly.field_type.text',
-        'description' => 'anomaly.field_type.textarea',
-        'iso_code'    => 'anomaly.field_type.text',
-        'zone'        => [
-            'type'   => 'anomaly.field_type.relationship',
+        'name'                    => 'anomaly.field_type.text',
+        'description'             => 'anomaly.field_type.textarea',
+        'handling_fee'            => 'anomaly.field_type.text',
+        'hidden'                  => 'anomaly.field_type.boolean',
+        'slug'                    => [
+            'type'   => 'anomaly.field_type.slug',
             'config' => [
-                'related' => 'Anomaly\ShippingModule\Zone\ZoneModel'
+                'slugify' => 'name',
+                'type'    => '-',
             ]
         ],
-        'country'     => [
-            'type'   => 'anomaly.field_type.select',
-            'config' => [
-                'handler' => 'countries'
-            ]
-        ],
-        'states'      => [
-            'type'   => 'anomaly.field_type.checkboxes',
-            'config' => [
-                'mode'    => 'tags',
-                'handler' => 'states'
-            ]
-        ],
-        'free'        => [
-            'type'   => 'anomaly.field_type.boolean',
-            'config' => [
-                'mode'  => 'checkbox',
-                'label' => 'anomaly.module.shipping::field.free.option',
-            ]
-        ],
-        'rate'        => [
-            'type'   => 'anomaly.field_type.select',
-            'config' => [
-                'mode'          => 'radio',
-                'default_value' => 'price',
-                'options'       => [
-                    'price'  => 'anomaly.module.shipping::field.rate.option.price',
-                    'weight' => 'anomaly.module.shipping::field.rate.option.weight',
-                ]
-            ]
-        ],
-        'min_unit'    => [
-            'type'   => 'anomaly.field_type.decimal',
-            'config' => [
-                'min'      => 0,
-                'decimals' => 2
-            ]
-        ],
-        'max_unit'    => [
-            'type'   => 'anomaly.field_type.decimal',
-            'config' => [
-                'min'      => 0,
-                'decimals' => 2
-            ]
-        ],
-        'carrier'     => [
+        'extension'               => [
             'type'   => 'anomaly.field_type.addon',
             'config' => [
                 'type'          => 'extension',
-                'search'        => 'anomaly.module.shipping::carrier.*',
-                'default_value' => 'anomaly.extension.generic_shipping_carrier'
+                'search'        => 'anomaly.module.shipping::method.*',
+                'default_value' => 'anomaly.extension.table_rate_shipping_method'
             ]
         ],
-        'length'      => [
-            'type' => 'anomaly.field_type.decimal',
-        ],
-        'width'       => [
-            'type' => 'anomaly.field_type.decimal',
-        ],
-        'height'      => [
-            'type' => 'anomaly.field_type.decimal',
-        ],
-        'weight'      => [
-            'type' => 'anomaly.field_type.decimal',
-        ],
-        'default'     => [
-            'type'   => 'anomaly.field_type.boolean',
-            'config' => [
-                'mode'  => 'checkbox',
-                'label' => 'anomaly.module.shipping::field.default.option',
-            ]
-        ],
-        'type'        => [
-            'type'   => 'anomaly.field_type.select',
-            'config' => [
-                'default_value' => 'package',
-                'options'       => [
-                    'package'  => 'anomaly.module.shipping::field.type.option.package',
-                    'envelope' => 'anomaly.module.shipping::field.type.option.envelope',
-                ]
-            ]
-        ],
-        'tax'         => [
+        'tax'                     => [
             'type'   => 'anomaly.field_type.relationship',
             'config' => [
                 'related' => 'Anomaly\TaxesModule\Tax\TaxModel',
+            ]
+        ],
+        'allowed_customer_groups' => [
+            'type'   => 'anomaly.field_type.multiple',
+            'config' => [
+                'related' => 'Anomaly\CustomersModule\Group\GroupModel'
+            ]
+        ],
+        'allowed_product_types'   => [
+            'type'   => 'anomaly.field_type.multiple',
+            'config' => [
+                'related' => 'Anomaly\CustomersModule\Group\GroupModel'
+            ]
+        ],
+        'countries'               => [
+            'type'   => 'anomaly.field_type.checkboxes',
+            'config' => [
+                'mode'    => 'tags',
+                'handler' => 'countries',
             ]
         ],
     ];

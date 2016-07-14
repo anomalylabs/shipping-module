@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <button class="close" data-dismiss="modal">
+        <span>&times;</span>
+    </button>
+    <h4 class="modal-title">{{ trans('module::message.choose_method') }}</h4>
+</div>
+
+<div class="modal-body">
+
+    <ul class="nav nav-pills nav-stacked">
+        {% for type in types %}
+            <li class="nav-item">
+                <a href="{{ url_to('admin/shipping/create?type=' ~ type.namespace) }}"
+                   class="nav-link">
+                    <strong>{{ trans(type.getTitle()) }}</strong>
+                    <br>
+                    <small>{{ trans(type.getDescription()) }}</small>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
