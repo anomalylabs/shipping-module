@@ -52,10 +52,10 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
         'allowed_product_types'   => [
             'type'   => 'anomaly.field_type.multiple',
             'config' => [
-                'related' => 'Anomaly\CustomersModule\Group\GroupModel'
+                'related' => 'Anomaly\ProductsModule\Type\TypeModel'
             ]
         ],
-        'countries'               => [
+        'allowed_countries'       => [
             'type'   => 'anomaly.field_type.checkboxes',
             'config' => [
                 'mode'    => 'tags',

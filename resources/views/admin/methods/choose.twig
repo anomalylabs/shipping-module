@@ -8,13 +8,13 @@
 <div class="modal-body">
 
     <ul class="nav nav-pills nav-stacked">
-        {% for type in types %}
+        {% for method in methods %}
             <li class="nav-item">
-                <a href="{{ url_to('admin/shipping/create?type=' ~ type.namespace) }}"
+                <a href="{{ url_to('admin/shipping/create?method=' ~ method.namespace) }}"
                    class="nav-link">
-                    <strong>{{ trans(type.getTitle()) }}</strong>
+                    <strong>{{ trans(method.getTitle()) }}</strong>
                     <br>
-                    <small>{{ trans(type.getDescription()) }}</small>
+                    <small>{{ trans(method.getDescription()) }}</small>
                 </a>
             </li>
         {% endfor %}

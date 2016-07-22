@@ -1,5 +1,8 @@
 <?php namespace Anomaly\ShippingModule\Http\Controller\Admin;
 
+use Anomaly\ShippingModule\Method\Contract\MethodInterface;
+use Anomaly\ShippingModule\Method\Contract\MethodRepositoryInterface;
+use Anomaly\ShippingModule\Method\Extension\MethodExtension;
 use Anomaly\ShippingModule\Method\Form\MethodFormBuilder;
 use Anomaly\ShippingModule\Method\Table\MethodTableBuilder;
 use Anomaly\Streams\Platform\Addon\Extension\ExtensionCollection;
@@ -38,7 +41,7 @@ class MethodsController extends AdminController
         return $this->view->make(
             'anomaly.module.shipping::admin/methods/choose',
             [
-                'types' => $extensions->search('anomaly.module.shipping::method.*')
+                'methods' => $extensions->search('anomaly.module.shipping::method.*')
             ]
         );
     }
@@ -49,9 +52,14 @@ class MethodsController extends AdminController
      * @param MethodFormBuilder $form
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function create(MethodFormBuilder $form)
+    public function create(ExtensionCollection $extensions)
     {
-        return $form->render();
+        /* @var MethodExtension $extension */
+        $extension = $extensions->get($this->request->get('method'));
+
+        return $extension
+            ->form()
+            ->render();
     }
 
     /**
@@ -61,8 +69,14 @@ class MethodsController extends AdminController
      * @param                   $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function edit(MethodFormBuilder $form, $id)
+    public function edit(MethodRepositoryInterface $methods, $id)
     {
-        return $form->render($id);
+        /* @var MethodInterface $method */
+        $method = $methods->find($id);
+
+        return $method
+            ->extension()
+            ->form()
+            ->render();
     }
 }

@@ -2,29 +2,42 @@
 
 use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
 
+/**
+ * Class MethodTableBuilder
+ *
+ * @link          http://pyrocms.com/
+ * @author        PyroCMS, Inc. <support@pyrocms.com>
+ * @author        Ryan Thompson <ryan@pyrocms.com>
+ * @package       Anomaly\ShippingModule\Method\Table
+ */
 class MethodTableBuilder extends TableBuilder
 {
-
-    /**
-     * The table views.
-     *
-     * @var array|string
-     */
-    protected $views = [];
 
     /**
      * The table filters.
      *
      * @var array|string
      */
-    protected $filters = [];
+    protected $filters = [
+        'search' => [
+            'fields' => [
+                'name',
+                'description',
+            ]
+        ],
+        'extension'
+    ];
 
     /**
      * The table columns.
      *
      * @var array|string
      */
-    protected $columns = [];
+    protected $columns = [
+        'name',
+        'slug',
+        'description',
+    ];
 
     /**
      * The table buttons.
@@ -32,7 +45,7 @@ class MethodTableBuilder extends TableBuilder
      * @var array|string
      */
     protected $buttons = [
-        'edit'
+        'edit',
     ];
 
     /**
@@ -41,21 +54,6 @@ class MethodTableBuilder extends TableBuilder
      * @var array|string
      */
     protected $actions = [
-        'delete'
+        'delete',
     ];
-
-    /**
-     * The table options.
-     *
-     * @var array
-     */
-    protected $options = [];
-
-    /**
-     * The table assets.
-     *
-     * @var array
-     */
-    protected $assets = [];
-
 }

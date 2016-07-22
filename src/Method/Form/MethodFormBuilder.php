@@ -1,57 +1,68 @@
 <?php namespace Anomaly\ShippingModule\Method\Form;
 
+use Anomaly\ShippingModule\Method\Extension\MethodExtension;
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
 
+/**
+ * Class MethodFormBuilder
+ *
+ * @link          http://pyrocms.com/
+ * @author        PyroCMS, Inc. <support@pyrocms.com>
+ * @author        Ryan Thompson <ryan@pyrocms.com>
+ * @package       Anomaly\ShippingModule\Method\Form
+ */
 class MethodFormBuilder extends FormBuilder
 {
 
     /**
-     * The form fields.
+     * The method extension.
      *
-     * @var array|string
+     * @var null|MethodExtension
      */
-    protected $fields = [];
+    protected $extension = null;
 
     /**
-     * Fields to skip.
-     *
-     * @var array|string
-     */
-    protected $skips = [];
-
-    /**
-     * The form actions.
-     *
-     * @var array|string
-     */
-    protected $actions = [];
-
-    /**
-     * The form buttons.
-     *
-     * @var array|string
-     */
-    protected $buttons = [];
-
-    /**
-     * The form options.
+     * The skipped fields.
      *
      * @var array
      */
-    protected $options = [];
+    protected $skips = [
+        'extension',
+    ];
 
     /**
-     * The form sections.
-     *
-     * @var array
+     * Fired just before saving.
      */
-    protected $sections = [];
+    public function onSaving()
+    {
+        if ($extension = $this->getExtension()) {
+
+            $entry = $this->getFormEntry();
+
+            $entry->setAttribute('extension', $extension);
+        }
+    }
 
     /**
-     * The form assets.
+     * Get the extension.
      *
-     * @var array
+     * @return MethodExtension|null
      */
-    protected $assets = [];
+    public function getExtension()
+    {
+        return $this->extension;
+    }
 
+    /**
+     * Set the extension.
+     *
+     * @param MethodExtension $extension
+     * @return $this
+     */
+    public function setExtension(MethodExtension $extension)
+    {
+        $this->extension = $extension;
+
+        return $this;
+    }
 }

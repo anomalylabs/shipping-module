@@ -28,6 +28,6 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
      * @var array
      */
     protected $singletons = [
-        'Anomaly\ShippingModule\Rate\Contract\RateRepositoryInterface' => 'Anomaly\ShippingModule\Rate\RateRepository',
+        'Anomaly\ShippingModule\Method\Contract\MethodRepositoryInterface' => 'Anomaly\ShippingModule\Method\MethodRepository',
     ];
 }
