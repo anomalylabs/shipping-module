@@ -23,9 +23,9 @@ class MethodTableBuilder extends TableBuilder
             'fields' => [
                 'name',
                 'description',
-            ]
+            ],
         ],
-        'extension'
+        'extension',
     ];
 
     /**

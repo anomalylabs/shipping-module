@@ -3,32 +3,32 @@
 return [
     'business'    => [
         'label'        => 'Business Name',
-        'instructions' => 'What is the legal name of your business?'
+        'instructions' => 'What is the legal name of your business?',
     ],
     'name'        => [
         'label'        => 'Contact Name',
-        'instructions' => 'Specify a general contact name.'
+        'instructions' => 'Specify a general contact name.',
     ],
     'phone'       => [
         'label'        => 'Contact Phone',
-        'instructions' => 'Specify a general contact phone number.'
+        'instructions' => 'Specify a general contact phone number.',
     ],
     'address'     => [
-        'label' => 'Address'
+        'label' => 'Address',
     ],
     'address2'    => [
-        'label' => 'Apt, suite, etc.'
+        'label' => 'Apt, suite, etc.',
     ],
     'city'        => [
-        'label' => 'City'
+        'label' => 'City',
     ],
     'state'       => [
-        'label' => 'State / Province'
+        'label' => 'State / Province',
     ],
     'postal_code' => [
-        'label' => 'Postal / ZIP Code'
+        'label' => 'Postal / ZIP Code',
     ],
     'country'     => [
-        'label' => 'Country'
+        'label' => 'Country',
     ],
 ];

@@ -27,40 +27,40 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
             'config' => [
                 'slugify' => 'name',
                 'type'    => '-',
-            ]
+            ],
         ],
         'extension'               => [
             'type'   => 'anomaly.field_type.addon',
             'config' => [
                 'type'          => 'extension',
                 'search'        => 'anomaly.module.shipping::method.*',
-                'default_value' => 'anomaly.extension.table_rate_shipping_method'
-            ]
+                'default_value' => 'anomaly.extension.table_rate_shipping_method',
+            ],
         ],
         'tax'                     => [
             'type'   => 'anomaly.field_type.relationship',
             'config' => [
                 'related' => 'Anomaly\TaxesModule\Tax\TaxModel',
-            ]
+            ],
         ],
         'allowed_customer_groups' => [
             'type'   => 'anomaly.field_type.multiple',
             'config' => [
-                'related' => 'Anomaly\CustomersModule\Group\GroupModel'
-            ]
+                'related' => 'Anomaly\CustomersModule\Group\GroupModel',
+            ],
         ],
         'allowed_product_types'   => [
             'type'   => 'anomaly.field_type.multiple',
             'config' => [
-                'related' => 'Anomaly\ProductsModule\Type\TypeModel'
-            ]
+                'related' => 'Anomaly\ProductsModule\Type\TypeModel',
+            ],
         ],
         'allowed_countries'       => [
             'type'   => 'anomaly.field_type.checkboxes',
             'config' => [
                 'mode'    => 'tags',
                 'handler' => 'countries',
-            ]
+            ],
         ],
     ];
 

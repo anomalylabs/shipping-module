@@ -24,9 +24,9 @@ class ShippingModule extends Module
                 'add_method' => [
                     'data-toggle' => 'modal',
                     'data-target' => '#modal',
-                    'href'        => 'admin/shipping/choose'
-                ]
-            ]
+                    'href'        => 'admin/shipping/choose',
+                ],
+            ],
         ],
     ];
 

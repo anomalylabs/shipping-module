@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'shipping_origin' => 'Shipping Origin'
+    'shipping_origin' => 'Shipping Origin',
 ];

@@ -28,7 +28,7 @@ class MethodExtensionFormSections
                 ],
                 'configuration' => [
                     'fields' => $configuration,
-                ]
+                ],
             ]
         );
     }

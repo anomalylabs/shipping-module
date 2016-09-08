@@ -5,7 +5,7 @@ use Anomaly\ShippingModule\Method\Contract\MethodInterface;
 use Anomaly\ShippingModule\Method\Extension\Form\MethodExtensionFormBuilder;
 use Anomaly\ShippingModule\Method\Extension\MethodExtension;
 use Anomaly\ShippingModule\Method\Form\MethodFormBuilder;
-use Illuminate\Contracts\Bus\SelfHandling;
+
 
 /**
  * Class GetFormBuilder
@@ -15,7 +15,7 @@ use Illuminate\Contracts\Bus\SelfHandling;
  * @author        Ryan Thompson <ryan@pyrocms.com>
  * @package       Anomaly\ShippingModule\Method\Extension\Command
  */
-class GetFormBuilder implements SelfHandling
+class GetFormBuilder
 {
 
     /**

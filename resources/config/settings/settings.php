@@ -38,8 +38,8 @@ return [
         'bind'   => 'anomaly.module.shipping::shipper.country',
         'config' => [
             'top_options' => [
-                'US'
-            ]
-        ]
-    ]
+                'US',
+            ],
+        ],
+    ],
 ];

@@ -41,7 +41,7 @@ class MethodsController extends AdminController
         return $this->view->make(
             'anomaly.module.shipping::admin/methods/choose',
             [
-                'methods' => $extensions->search('anomaly.module.shipping::method.*')
+                'methods' => $extensions->search('anomaly.module.shipping::method.*'),
             ]
         );
     }

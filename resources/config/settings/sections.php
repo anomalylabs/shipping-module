@@ -14,6 +14,6 @@ return [
             'state',
             'postal_code',
             'country',
-        ]
-    ]
+        ],
+    ],
 ];
