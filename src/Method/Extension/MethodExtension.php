@@ -40,7 +40,7 @@ class MethodExtension extends Extension
      * Return if the order is supported or not.
      *
      * @param MethodInterface $method
-     * @param OrderInterface  $order
+     * @param OrderInterface $order
      */
     public function supported(OrderInterface $order)
     {

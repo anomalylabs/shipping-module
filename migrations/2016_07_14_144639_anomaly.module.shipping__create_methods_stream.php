@@ -35,25 +35,15 @@ class AnomalyModuleShippingCreateMethodsStream extends Migration
             'required'     => true,
             'translatable' => true,
         ],
-        'slug'        => [
-            'required' => true,
-            'unique'   => true,
-        ],
         'description' => [
             'translatable' => true,
         ],
         'extension'   => [
             'required' => true,
         ],
+        'allowed_shipping',
         'handling_fee',
-        'tax',
-        'maximum_package_weight',
-        'minimum_weight',
-        'maximum_weight',
-        'hidden',
-        'allowed_countries',
-        'allowed_customer_groups',
-        'allowed_product_types',
+        'visible',
     ];
 
 }

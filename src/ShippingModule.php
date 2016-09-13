@@ -8,7 +8,6 @@ use Anomaly\Streams\Platform\Addon\Module\Module;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\ShippingModule
  */
 class ShippingModule extends Module
 {
@@ -19,13 +18,37 @@ class ShippingModule extends Module
      * @var array
      */
     protected $sections = [
-        'methods' => [
-            'buttons' => [
-                'add_method' => [
-                    'data-toggle' => 'modal',
-                    'data-target' => '#modal',
-                    'href'        => 'admin/shipping/choose',
+        'zones'   => [
+            'buttons'  => [
+                'add_zone',
+            ],
+            'sections' => [
+                'methods' => [
+                    'href'    => 'admin/shipping/methods/{request.route.parameters.zone}',
+                    'buttons' => [
+                        'add_method' => [
+                            'data-toggle' => 'modal',
+                            'data-target' => '#modal',
+                            'href'        => 'admin/shipping/methods/{request.route.parameters.zone}/choose',
+                        ],
+                    ],
                 ],
+                'rules'   => [
+                    'href'    => 'admin/shipping/rules/{request.route.parameters.method}',
+                    'buttons' => [
+                        'add_rule',
+                    ],
+                ],
+            ],
+        ],
+        'groups'  => [
+            'buttons' => [
+                'new_group',
+            ],
+        ],
+        'origins' => [
+            'buttons' => [
+                'add_origin',
             ],
         ],
     ];

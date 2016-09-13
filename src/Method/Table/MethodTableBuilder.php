@@ -46,6 +46,11 @@ class MethodTableBuilder extends TableBuilder
      */
     protected $buttons = [
         'edit',
+        'rules' => [
+            'icon' => 'wrench',
+            'type' => 'primary',
+            'href' => 'admin/shipping/rules/{entry.id}',
+        ],
     ];
 
     /**

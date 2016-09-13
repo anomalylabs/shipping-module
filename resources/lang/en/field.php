@@ -1,35 +1,54 @@
 <?php
 
 return [
-    'name'                    => [
+    'name'         => [
         'name'         => 'Name',
         'instructions' => 'This will be the displayed name at checkout.',
     ],
-    'slug'                    => [
+    'slug'         => [
         'name' => 'Slug',
     ],
-    'description'             => [
+    'description'  => [
         'name' => 'Description',
     ],
-    'handling_fee'            => [
+    'handling_fee' => [
         'name' => 'Handling Fee',
     ],
-    'tax'                     => [
+    'tax'          => [
         'name' => 'Tax Class',
     ],
-    'hidden'                  => [
-        'name' => 'Hidden',
+    'visible'      => [
+        'name' => 'Visible',
     ],
-    'allowed_countries'       => [
-        'name' => 'Allowed Countries',
-    ],
-    'allowed_customer_groups' => [
-        'name' => 'Allowed Customer Groups',
-    ],
-    'allowed_product_types'   => [
-        'name' => 'Allowed Product Types',
-    ],
-    'extension'               => [
+    'extension'    => [
         'name' => 'Extension',
+    ],
+    'country'      => [
+        'name' => 'Country',
+    ],
+    'states'       => [
+        'name' => 'States',
+    ],
+    'postal_codes' => [
+        'name' => 'ZIP/Postal Codes',
+    ],
+    'phone'        => [
+        'name' => 'Phone',
+    ],
+    'address1'     => [
+        'name' => 'Address',
+    ],
+    'address2'     => [
+        'name'  => 'Address 2',
+        'label' => 'Apartment, suite, unit etc.',
+    ],
+    'city'         => [
+        'name' => 'City',
+    ],
+    'state'        => [
+        'name' => 'State/Region',
+    ],
+    'postal_code'  => [
+        'name' => 'ZIP/Postal Code',
     ],
 ];

@@ -14,7 +14,6 @@ use Anomaly\Streams\Platform\Http\Controller\AdminController;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\ShippingModule\Http\Controller\Admin
  */
 class MethodsController extends AdminController
 {

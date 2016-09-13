@@ -17,16 +17,6 @@ class MethodModel extends ShippingMethodsEntryModel implements MethodInterface
 {
 
     /**
-     * Get the slug.
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
      * Get the extension.
      *
      * @return MethodExtension
@@ -46,35 +36,5 @@ class MethodModel extends ShippingMethodsEntryModel implements MethodInterface
         $extension = $this->getExtension();
 
         return $extension->setMethod($this);
-    }
-
-    /**
-     * Get the allowed countries.
-     *
-     * @return array
-     */
-    public function getAllowedCountries()
-    {
-        return $this->allowed_countries;
-    }
-
-    /**
-     * Get the allowed customer groups.
-     *
-     * @return CustomerCollection
-     */
-    public function getAllowedProductTypes()
-    {
-        return $this->allowed_product_types;
-    }
-
-    /**
-     * Get the allowed customer groups.
-     *
-     * @return CustomerCollection
-     */
-    public function getAllowedCustomerGroups()
-    {
-        return $this->allowed_customer_groups;
     }
 }

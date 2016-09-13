@@ -10,7 +10,6 @@ use Anomaly\Streams\Platform\Ui\Form\Multiple\MultipleFormBuilder;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\ShippingModule\Method\Extension\Form
  */
 class MethodExtensionFormBuilder extends MultipleFormBuilder
 {
@@ -26,6 +25,6 @@ class MethodExtensionFormBuilder extends MultipleFormBuilder
         $method        = $this->getChildFormEntry('method');
         $configuration = $this->getChildForm('configuration');
 
-        $configuration->setScope($method->getSlug());
+        $configuration->setScope($method->getId());
     }
 }

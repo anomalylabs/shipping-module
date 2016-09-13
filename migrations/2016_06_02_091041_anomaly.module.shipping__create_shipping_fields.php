@@ -18,18 +18,25 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
      * @var array
      */
     protected $fields = [
-        'name'                    => 'anomaly.field_type.text',
-        'description'             => 'anomaly.field_type.textarea',
-        'handling_fee'            => 'anomaly.field_type.text',
-        'hidden'                  => 'anomaly.field_type.boolean',
-        'slug'                    => [
+        'name'           => 'anomaly.field_type.text',
+        'description'    => 'anomaly.field_type.textarea',
+        'handling_fee'   => 'anomaly.field_type.text',
+        'visible'        => [
+            'type'   => 'anomaly.field_type.boolean',
+            'config' => [
+                'default_option' => true,
+            ],
+        ],
+        'item'           => 'anomaly.field_type.polymorphic',
+        'shippable'      => 'anomaly.field_type.boolean',
+        'slug'           => [
             'type'   => 'anomaly.field_type.slug',
             'config' => [
                 'slugify' => 'name',
                 'type'    => '-',
             ],
         ],
-        'extension'               => [
+        'extension'      => [
             'type'   => 'anomaly.field_type.addon',
             'config' => [
                 'type'          => 'extension',
@@ -37,31 +44,71 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
                 'default_value' => 'anomaly.extension.table_rate_shipping_method',
             ],
         ],
-        'tax'                     => [
-            'type'   => 'anomaly.field_type.relationship',
-            'config' => [
-                'related' => 'Anomaly\TaxesModule\Tax\TaxModel',
-            ],
+        'country'        => [
+            'type' => 'anomaly.field_type.country',
         ],
-        'allowed_customer_groups' => [
-            'type'   => 'anomaly.field_type.multiple',
-            'config' => [
-                'related' => 'Anomaly\CustomersModule\Group\GroupModel',
-            ],
-        ],
-        'allowed_product_types'   => [
-            'type'   => 'anomaly.field_type.multiple',
-            'config' => [
-                'related' => 'Anomaly\ProductsModule\Type\TypeModel',
-            ],
-        ],
-        'allowed_countries'       => [
+        'states'         => [
             'type'   => 'anomaly.field_type.checkboxes',
             'config' => [
+                'handler' => 'states',
                 'mode'    => 'tags',
-                'handler' => 'countries',
             ],
         ],
+        'postal_codes'   => 'anomaly.field_type.tags',
+        'weight'         => [
+            'type'   => 'anomaly.field_type.decimal',
+            'config' => [
+                'decimals' => 1,
+            ],
+        ],
+        'length'         => [
+            'type'   => 'anomaly.field_type.decimal',
+            'config' => [
+                'decimals' => 1,
+            ],
+        ],
+        'width'          => [
+            'type'   => 'anomaly.field_type.decimal',
+            'config' => [
+                'decimals' => 1,
+            ],
+        ],
+        'height'         => [
+            'type'   => 'anomaly.field_type.decimal',
+            'config' => [
+                'decimals' => 1,
+            ],
+        ],
+        'allowed_groups' => [
+            'type'   => 'anomaly.field_type.multiple',
+            'config' => [
+                'related' => 'Anomaly\ShippingModule\Group\GroupModel',
+            ],
+        ],
+        'origin'         => [
+            'type'   => 'anomaly.field_type.relationship',
+            'config' => [
+                'related' => 'Anomaly\ShippingModule\Origin\OriginModel',
+            ],
+        ],
+        'method'         => [
+            'type'   => 'anomaly.field_type.relationship',
+            'config' => [
+                'related' => 'Anomaly\ShippingModule\Method\MethodModel',
+            ],
+        ],
+        'group'         => [
+            'type'   => 'anomaly.field_type.relationship',
+            'config' => [
+                'related' => 'Anomaly\ShippingModule\Group\GroupModel',
+            ],
+        ],
+        'phone'          => 'anomaly.field_type.text',
+        'address1'       => 'anomaly.field_type.text',
+        'address2'       => 'anomaly.field_type.text',
+        'city'           => 'anomaly.field_type.text',
+        'state'          => 'anomaly.field_type.state',
+        'postal_code'    => 'anomaly.field_type.text',
+        'adjustment'     => 'anomaly.field_type.text',
     ];
-
 }

@@ -48,8 +48,8 @@ class GetFormBuilder
      * Handle the command.
      *
      * @param MethodExtensionFormBuilder $builder
-     * @param ConfigurationFormBuilder   $configuration
-     * @param MethodFormBuilder          $method
+     * @param ConfigurationFormBuilder $configuration
+     * @param MethodFormBuilder $method
      * @return MethodExtensionFormBuilder
      */
     public function handle(
