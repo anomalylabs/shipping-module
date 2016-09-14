@@ -19,22 +19,25 @@ class ShippingModule extends Module
      */
     protected $sections = [
         'zones'   => [
-            'buttons'  => [
+            'buttons' => [
                 'add_zone',
             ],
-            'sections' => [
-                'methods' => [
-                    'href'    => 'admin/shipping/methods/{request.route.parameters.zone}',
-                    'buttons' => [
-                        'add_method' => [
-                            'data-toggle' => 'modal',
-                            'data-target' => '#modal',
-                            'href'        => 'admin/shipping/methods/{request.route.parameters.zone}/choose',
-                        ],
-                    ],
+        ],
+        'methods' => [
+            'data-toggle' => 'modal',
+            'data-target' => '#modal',
+            'data-href'   => 'admin/shipping/methods/{request.route.parameters.zone}',
+            'href'        => 'admin/shipping/choose',
+            'buttons'     => [
+                'add_method' => [
+                    'data-toggle' => 'modal',
+                    'data-target' => '#modal',
+                    'href'        => 'admin/shipping/methods/{request.route.parameters.zone}/choose',
                 ],
-                'rules'   => [
-                    'href'    => 'admin/shipping/rules/{request.route.parameters.method}',
+            ],
+            'sections'    => [
+                'rules' => [
+                    'href'    => 'admin/shipping/methods/{request.route.parameters.method}/rules',
                     'buttons' => [
                         'add_rule',
                     ],

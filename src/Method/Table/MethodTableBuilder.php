@@ -49,7 +49,7 @@ class MethodTableBuilder extends TableBuilder
         'rules' => [
             'icon' => 'wrench',
             'type' => 'primary',
-            'href' => 'admin/shipping/rules/{entry.id}',
+            'href' => 'admin/shipping/methods/{entry.id}/rules',
         ],
     ];
 

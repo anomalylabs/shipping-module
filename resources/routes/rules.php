@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'admin/shipping/rules/{method}' => 'Anomaly\ShippingModule\Http\Controller\Admin\RulesController@index',
-    'admin/shipping/rules/{method}/create' => 'Anomaly\ShippingModule\Http\Controller\Admin\RulesController@create',
-    'admin/shipping/rules/{method}/edit/{id}' => 'Anomaly\ShippingModule\Http\Controller\Admin\RulesController@edit'
+    'admin/shipping/methods/{method}/rules'           => 'Anomaly\ShippingModule\Http\Controller\Admin\RulesController@index',
+    'admin/shipping/methods/{method}/rules/create'    => 'Anomaly\ShippingModule\Http\Controller\Admin\RulesController@create',
+    'admin/shipping/methods/{method}/rules/edit/{id}' => 'Anomaly\ShippingModule\Http\Controller\Admin\RulesController@edit',
 ];

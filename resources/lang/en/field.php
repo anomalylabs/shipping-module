@@ -51,4 +51,11 @@ return [
     'postal_code'  => [
         'name' => 'ZIP/Postal Code',
     ],
+    'group'        => [
+        'name' => 'Group',
+    ],
+    'adjustment'   => [
+        'name'  => 'Adjustment',
+        'label' => 'Price Adjustment',
+    ],
 ];
