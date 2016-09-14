@@ -97,12 +97,14 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
                 'related' => 'Anomaly\ShippingModule\Method\MethodModel',
             ],
         ],
-        'group'         => [
+        'group'          => [
             'type'   => 'anomaly.field_type.relationship',
             'config' => [
                 'related' => 'Anomaly\ShippingModule\Group\GroupModel',
             ],
         ],
+        'business'       => 'anomaly.field_type.text',
+        'email'          => 'anomaly.field_type.email',
         'phone'          => 'anomaly.field_type.text',
         'address1'       => 'anomaly.field_type.text',
         'address2'       => 'anomaly.field_type.text',
