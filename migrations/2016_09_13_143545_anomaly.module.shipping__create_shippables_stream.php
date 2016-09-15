@@ -38,10 +38,6 @@ class AnomalyModuleShippingCreateShippablesStream extends Migration
         'origin' => [
             'required' => true,
         ],
-        'weight',
-        'length',
-        'width',
-        'height',
     ];
 
 }

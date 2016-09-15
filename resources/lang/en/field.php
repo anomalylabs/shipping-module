@@ -110,20 +110,4 @@ return [
         'name'         => 'Origin',
         'instructions' => 'Where is this item shipped from?',
     ],
-    'weight'       => [
-        'name'         => 'Weight',
-        'instructions' => 'How much does this item weigh?',
-    ],
-    'length'       => [
-        'name'         => 'Length',
-        'instructions' => 'How long is this item?',
-    ],
-    'width'        => [
-        'name'         => 'Width',
-        'instructions' => 'How wide is this item?',
-    ],
-    'height'       => [
-        'name'         => 'Height',
-        'instructions' => 'What is the height of this item?',
-    ],
 ];

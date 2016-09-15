@@ -55,30 +55,6 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
             ],
         ],
         'postal_codes'   => 'anomaly.field_type.tags',
-        'weight'         => [
-            'type'   => 'anomaly.field_type.decimal',
-            'config' => [
-                'decimals' => 1,
-            ],
-        ],
-        'length'         => [
-            'type'   => 'anomaly.field_type.decimal',
-            'config' => [
-                'decimals' => 1,
-            ],
-        ],
-        'width'          => [
-            'type'   => 'anomaly.field_type.decimal',
-            'config' => [
-                'decimals' => 1,
-            ],
-        ],
-        'height'         => [
-            'type'   => 'anomaly.field_type.decimal',
-            'config' => [
-                'decimals' => 1,
-            ],
-        ],
         'allowed_groups' => [
             'type'   => 'anomaly.field_type.multiple',
             'config' => [
