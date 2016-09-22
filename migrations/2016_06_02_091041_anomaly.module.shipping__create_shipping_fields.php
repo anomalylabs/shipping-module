@@ -79,6 +79,12 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
                 'related' => 'Anomaly\ShippingModule\Group\GroupModel',
             ],
         ],
+        'zone'          => [
+            'type'   => 'anomaly.field_type.relationship',
+            'config' => [
+                'related' => 'Anomaly\ShippingModule\Zone\ZoneModel',
+            ],
+        ],
         'business'       => 'anomaly.field_type.text',
         'email'          => 'anomaly.field_type.email',
         'phone'          => 'anomaly.field_type.text',

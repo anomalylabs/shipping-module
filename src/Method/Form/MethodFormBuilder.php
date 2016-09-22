@@ -28,6 +28,7 @@ class MethodFormBuilder extends FormBuilder
      */
     protected $skips = [
         'extension',
+        'zone',
     ];
 
     /**

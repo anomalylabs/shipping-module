@@ -5,6 +5,8 @@ use Anomaly\ShippingModule\Method\Contract\MethodRepositoryInterface;
 use Anomaly\ShippingModule\Method\Extension\MethodExtension;
 use Anomaly\ShippingModule\Method\Form\MethodFormBuilder;
 use Anomaly\ShippingModule\Method\Table\MethodTableBuilder;
+use Anomaly\ShippingModule\Zone\Contract\ZoneInterface;
+use Anomaly\ShippingModule\Zone\Contract\ZoneRepositoryInterface;
 use Anomaly\Streams\Platform\Addon\Extension\ExtensionCollection;
 use Anomaly\Streams\Platform\Http\Controller\AdminController;
 
@@ -48,16 +50,22 @@ class MethodsController extends AdminController
     /**
      * Create a new entry.
      *
-     * @param MethodFormBuilder $form
+     * @param ExtensionCollection     $extensions
+     * @param ZoneRepositoryInterface $zones
      * @return \Symfony\Component\HttpFoundation\Response
+     * @internal param MethodFormBuilder $form
      */
-    public function create(ExtensionCollection $extensions)
+    public function create(ExtensionCollection $extensions, ZoneRepositoryInterface $zones)
     {
         /* @var MethodExtension $extension */
         $extension = $extensions->get($this->request->get('method'));
 
+        /* @var ZoneInterface $zone */
+        $zone = $zones->find($this->route->getParameter('zone'));
+
         return $extension
             ->form()
+            ->setZone($zone)
             ->render();
     }
 
