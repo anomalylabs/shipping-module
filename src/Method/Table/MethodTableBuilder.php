@@ -35,7 +35,6 @@ class MethodTableBuilder extends TableBuilder
      */
     protected $columns = [
         'name',
-        'slug',
         'description',
     ];
 

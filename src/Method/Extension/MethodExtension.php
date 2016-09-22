@@ -1,7 +1,5 @@
 <?php namespace Anomaly\ShippingModule\Method\Extension;
 
-use Anomaly\OrdersModule\Item\Contract\ItemInterface;
-use Anomaly\OrdersModule\Order\Contract\OrderInterface;
 use Anomaly\ShippingModule\Method\Contract\MethodInterface;
 use Anomaly\ShippingModule\Method\Extension\Command\GetFormBuilder;
 use Anomaly\ShippingModule\Method\Extension\Form\MethodExtensionFormBuilder;
@@ -40,7 +38,7 @@ class MethodExtension extends Extension
      * Return if the order is supported or not.
      *
      * @param MethodInterface $method
-     * @param OrderInterface $order
+     * @param OrderInterface  $order
      */
     public function supported(OrderInterface $order)
     {
@@ -76,13 +74,13 @@ class MethodExtension extends Extension
     }
 
     /**
-     * Return a quote for an order.
+     * Return a shipping rate.
      *
-     * @param OrderInterface $order
+     * @param array $parameters
      * @throws \Exception
      * @return float
      */
-    public function quote(OrderInterface $order)
+    public function rate(array $parameters)
     {
         throw new \Exception(__CLASS__ . "must implement " . __METHOD__);
     }

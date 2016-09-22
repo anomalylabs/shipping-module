@@ -68,7 +68,7 @@ class GetFormBuilder
             'configuration',
             $configuration
                 ->setEntry($this->extension->getNamespace())
-                ->setScope($this->method ? $this->method->getSlug() : null)
+                ->setScope($this->method ? $this->method->getId() : null)
         );
 
         return $builder;

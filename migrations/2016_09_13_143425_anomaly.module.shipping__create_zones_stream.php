@@ -37,5 +37,6 @@ class AnomalyModuleShippingCreateZonesStream extends Migration
         'country',
         'states',
         'postal_codes',
+        'cities',
     ];
 }

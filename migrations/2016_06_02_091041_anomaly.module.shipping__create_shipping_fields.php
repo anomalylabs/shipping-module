@@ -24,7 +24,7 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
         'visible'        => [
             'type'   => 'anomaly.field_type.boolean',
             'config' => [
-                'default_option' => true,
+                'default_value' => true,
             ],
         ],
         'item'           => 'anomaly.field_type.polymorphic',

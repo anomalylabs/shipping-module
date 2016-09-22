@@ -68,10 +68,10 @@ class MethodsController extends AdminController
      * @param                   $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function edit(MethodRepositoryInterface $methods, $id)
+    public function edit(MethodRepositoryInterface $methods)
     {
         /* @var MethodInterface $method */
-        $method = $methods->find($id);
+        $method = $methods->find($this->route->getParameter('id'));
 
         return $method
             ->extension()

@@ -43,18 +43,29 @@ return [
             'origins' => 'Specify the origin country.',
         ],
         'warning'      => [
-            'zones' => 'If not specified this zone will apply to all countries.',
+            'zones' => 'Leave blank to apply to all countries.',
+        ],
+        'placeholder'  => [
+            'zones' => '*',
         ],
     ],
     'states'       => [
         'name'         => 'States',
         'instructions' => 'Which state(s) does this zone apply to?',
-        'warning'      => 'If not specified this zone will apply to all states within the country restriction.',
+        'warning'      => 'Leave blank to apply to all states.',
+        'placeholder'  => '*',
     ],
     'postal_codes' => [
         'name'         => 'ZIP/Postal Codes',
         'instructions' => 'Which ZIP/postal code(s) does this zone apply to?',
-        'warning'      => 'If not specified this zone will apply to all postal codes within the states restriction.',
+        'warning'      => 'Leave blank to apply to all ZIP/postal codes.',
+        'placeholder'  => '*',
+    ],
+    'cities'       => [
+        'name'         => 'Cities',
+        'instructions' => 'Which cities does this zone apply to?',
+        'warning'      => 'Leave blank to apply to all cities.',
+        'placeholder'  => '*',
     ],
     'business'     => [
         'name'         => 'Business',
@@ -97,7 +108,7 @@ return [
     'adjustment'   => [
         'name'         => 'Adjustment',
         'label'        => 'Price Adjustment',
-        'instructions' => 'Specify how the price should be adjusted. You can use <strong>+/-</strong> values as well as <strong>+\-{weight}*0.5</strong> expressions.',
+        'instructions' => 'Specify how the price should be adjusted. You can use <strong>+/-10</strong> values as well as <strong>+\-10%</strong> expressions.',
     ],
     'item'         => [
         'name' => 'Item',
