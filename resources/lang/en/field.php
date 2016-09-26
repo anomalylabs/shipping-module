@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'name'         => [
+    'name'           => [
         'name'         => 'Name',
         'instructions' => [
             'zones'   => 'Specify a short descriptive name for this shipping zone.',
@@ -10,14 +10,14 @@ return [
             'methods' => 'This will be the displayed name at checkout.',
         ],
     ],
-    'slug'         => [
+    'slug'           => [
         'name'         => 'Slug',
         'instructions' => [
             'zones'  => 'The slug is used when accessing this zone via API.',
             'groups' => 'The slug is used when accessing this group via API.',
         ],
     ],
-    'description'  => [
+    'description'    => [
         'name'         => 'Description',
         'instructions' => [
             'zones'   => 'Briefly describe this shipping zone for others.',
@@ -25,18 +25,23 @@ return [
             'methods' => 'Briefly describe this shipping method for others.',
         ],
     ],
-    'handling_fee' => [
+    'handling_fee'   => [
         'name'         => 'Handling Fee',
         'instructions' => 'Specify a handling fee to be added to the shipping quote.',
     ],
-    'visible'      => [
+    'allowed_groups' => [
+        'name'         => 'Allowed Groups',
+        'instructions' => 'Specify the shipping groups that support this shipping method.',
+        'warning'      => 'If left blank then all groups will support this method.',
+    ],
+    'visible'        => [
         'name'         => 'Visible',
         'instructions' => 'Is this shipping method publicly avaiable?',
     ],
-    'extension'    => [
+    'extension'      => [
         'name' => 'Extension',
     ],
-    'country'      => [
+    'country'        => [
         'name'         => 'Country',
         'instructions' => [
             'zones'   => 'Which country does this zone apply to?',
@@ -49,79 +54,79 @@ return [
             'zones' => '*',
         ],
     ],
-    'states'       => [
+    'states'         => [
         'name'         => 'States',
         'instructions' => 'Which state(s) does this zone apply to?',
         'warning'      => 'Leave blank to apply to all states.',
         'placeholder'  => '*',
     ],
-    'postal_codes' => [
+    'postal_codes'   => [
         'name'         => 'ZIP/Postal Codes',
         'instructions' => 'Which ZIP/postal code(s) does this zone apply to?',
         'warning'      => 'Leave blank to apply to all ZIP/postal codes.',
         'placeholder'  => '*',
     ],
-    'cities'       => [
+    'cities'         => [
         'name'         => 'Cities',
         'instructions' => 'Which cities does this zone apply to?',
         'warning'      => 'Leave blank to apply to all cities.',
         'placeholder'  => '*',
     ],
-    'contact'      => [
+    'contact'        => [
         'name'         => 'Contact',
         'instructions' => 'Specify the contact name for this origin.',
     ],
-    'business'     => [
+    'business'       => [
         'name'         => 'Business',
         'instructions' => 'Specify the business name.',
     ],
-    'phone'        => [
+    'phone'          => [
         'name'         => 'Phone',
         'instructions' => 'Specify the contact phone number.',
     ],
-    'email'        => [
+    'email'          => [
         'name'         => 'Email',
         'instructions' => 'Specify the contact email address.',
     ],
-    'address1'     => [
+    'address1'       => [
         'name' => 'Address',
     ],
-    'address2'     => [
+    'address2'       => [
         'name'  => 'Address 2',
         'label' => 'Apartment, suite, unit etc.',
     ],
-    'city'         => [
+    'city'           => [
         'name'         => 'City',
         'instructions' => 'Specify the origin city.',
     ],
-    'state'        => [
+    'state'          => [
         'name'         => 'State/Region',
         'instructions' => 'Specify the origin state/region.',
     ],
-    'postal_code'  => [
+    'postal_code'    => [
         'name'         => 'ZIP/Postal Code',
         'instructions' => 'Specify the origin ZIP/postal code.',
     ],
-    'group'        => [
+    'group'          => [
         'name'         => 'Group',
         'instructions' => [
             'rules'      => 'Which shipping group does this rule apply to?',
             'shippables' => 'Which shipping group does this item belong to?',
         ],
     ],
-    'adjustment'   => [
+    'adjustment'     => [
         'name'         => 'Adjustment',
         'label'        => 'Price Adjustment',
         'instructions' => 'Specify how the price should be adjusted. You can use <strong>+/-10</strong> values as well as <strong>+\-10%</strong> expressions.',
     ],
-    'item'         => [
+    'item'           => [
         'name' => 'Item',
     ],
-    'shippable'    => [
+    'shippable'      => [
         'name'         => 'Shippable',
         'instructions' => 'Does this item require shipping?',
     ],
-    'origin'       => [
+    'origin'         => [
         'name'         => 'Origin',
         'instructions' => 'Where is this item shipped from?',
     ],
