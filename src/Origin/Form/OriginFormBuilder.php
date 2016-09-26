@@ -25,6 +25,7 @@ class OriginFormBuilder extends FormBuilder
         ],
         'contact' => [
             'fields' => [
+                'contact',
                 'business',
                 'email',
                 'phone',

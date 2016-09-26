@@ -34,6 +34,7 @@ class AnomalyModuleShippingCreateOriginsStream extends Migration
             'required' => true,
             'unique'   => true,
         ],
+        'contact',
         'business',
         'email',
         'phone',

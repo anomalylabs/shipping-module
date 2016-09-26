@@ -4,7 +4,9 @@ use Anomaly\ShippingModule\Group\Contract\GroupInterface;
 use Anomaly\ShippingModule\Method\MethodCollection;
 use Anomaly\ShippingModule\Origin\Contract\OriginInterface;
 use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
+use Anomaly\Streams\Platform\Model\EloquentModel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 /**
  * Interface ShippableInterface
@@ -23,6 +25,63 @@ interface ShippableInterface extends EntryInterface
      * @return MethodCollection
      */
     public function methods();
+
+    /**
+     * Return whether the item
+     * has dimensions or not.
+     *
+     * @return bool
+     */
+    public function itemHasDimensions();
+
+    /**
+     * Return the item length.
+     *
+     * @return float|null
+     */
+    public function getItemLength();
+
+    /**
+     * Return the item width.
+     *
+     * @return float|null
+     */
+    public function getItemWidth();
+
+    /**
+     * Return the item height.
+     *
+     * @return float|null
+     */
+    public function getItemHeight();
+
+    /**
+     * Return the item weight.
+     *
+     * @return float|null
+     */
+    public function getItemWeight();
+
+    /**
+     * Get the item unit system.
+     *
+     * @return string
+     */
+    public function getItemUnitSystem();
+
+    /**
+     * Get the related item.
+     *
+     * @return EloquentModel
+     */
+    public function getItem();
+
+    /**
+     * Return the item relation.
+     *
+     * @return MorphTo
+     */
+    public function item();
 
     /**
      * Get the related group.

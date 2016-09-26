@@ -20,6 +20,13 @@ interface OriginInterface extends EntryInterface
     public function getName();
 
     /**
+     * Get the contact.
+     *
+     * @return string
+     */
+    public function getContact();
+
+    /**
      * Get the business.
      *
      * @return string

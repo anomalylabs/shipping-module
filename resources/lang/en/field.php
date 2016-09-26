@@ -67,6 +67,10 @@ return [
         'warning'      => 'Leave blank to apply to all cities.',
         'placeholder'  => '*',
     ],
+    'contact'      => [
+        'name'         => 'Contact',
+        'instructions' => 'Specify the contact name for this origin.',
+    ],
     'business'     => [
         'name'         => 'Business',
         'instructions' => 'Specify the business name.',

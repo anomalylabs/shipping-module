@@ -24,6 +24,16 @@ class OriginModel extends ShippingOriginsEntryModel implements OriginInterface
     }
 
     /**
+     * Get the contact.
+     *
+     * @return string
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+
+    /**
      * Get the business.
      *
      * @return string

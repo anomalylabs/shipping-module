@@ -3,6 +3,7 @@
 use Anomaly\ShippingModule\Shippable\ShippableModel;
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 use Anomaly\Streams\Platform\Model\EloquentModel;
+use Illuminate\Contracts\Config\Repository;
 
 /**
  * Class ShippingModuleServiceProvider
@@ -47,6 +48,7 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
         $model->bind(
             'shippable',
             function () {
+
                 /* @var EloquentModel $this */
                 return $this->morphOne(ShippableModel::class, 'item', 'item_type');
             }
@@ -55,6 +57,7 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
         $model->bind(
             'get_shippable',
             function () {
+
                 /* @var EloquentModel $this */
                 return $this->shippable()->first();
             }
@@ -63,6 +66,7 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
         $model->bind(
             'get_shippable_weight',
             function () {
+
                 /* @var EloquentModel $this */
                 return $this->weight;
             }
@@ -71,6 +75,7 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
         $model->bind(
             'get_shippable_length',
             function () {
+
                 /* @var EloquentModel $this */
                 return $this->length;
             }
@@ -79,6 +84,7 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
         $model->bind(
             'get_shippable_height',
             function () {
+
                 /* @var EloquentModel $this */
                 return $this->height;
             }
@@ -87,8 +93,18 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
         $model->bind(
             'get_shippable_width',
             function () {
+
                 /* @var EloquentModel $this */
                 return $this->width;
+            }
+        );
+
+        $model->bind(
+            'get_shippable_unit_system',
+            function (Repository $config) {
+
+                /* @var EloquentModel $this */
+                return $this->unit_system ?: $config->get('streams::system.unit_system', 'imperial');
             }
         );
     }
