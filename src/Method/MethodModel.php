@@ -1,6 +1,6 @@
 <?php namespace Anomaly\ShippingModule\Method;
 
-use Anomaly\ShippingModule\Group\Contract\GroupInterface;
+use Anomaly\ShippingModule\Method\Command\GetAdjustment;
 use Anomaly\ShippingModule\Method\Command\GetPrice;
 use Anomaly\ShippingModule\Method\Command\GetQuote;
 use Anomaly\ShippingModule\Method\Contract\MethodInterface;
@@ -38,6 +38,17 @@ class MethodModel extends ShippingMethodsEntryModel implements MethodInterface
     public function price(ShippableInterface $shippable, array $parameters = [])
     {
         return $this->dispatch(new GetPrice($this, $shippable, $this->quote($shippable, $parameters)));
+    }
+
+    /**
+     * Return the shipping adjustment.
+     *
+     * @param array $parameters
+     * @return float
+     */
+    public function adjustment(ShippableInterface $shippable, array $parameters = [])
+    {
+        return $this->dispatch(new GetAdjustment($this, $shippable, $this->quote($shippable, $parameters)));
     }
 
     /**

@@ -5,6 +5,7 @@ return [
         'name'         => 'Name',
         'instructions' => [
             'zones'   => 'Specify a short descriptive name for this shipping zone.',
+            'rules'   => 'Specify a short descriptive name for this shipping rule.',
             'groups'  => 'Specify a short descriptive name for this shipping group.',
             'origins' => 'Specify a short descriptive name for this shipping origin.',
             'methods' => 'This will be the displayed name at checkout.',
@@ -21,6 +22,7 @@ return [
         'name'         => 'Description',
         'instructions' => [
             'zones'   => 'Briefly describe this shipping zone for others.',
+            'rules'   => 'Briefly describe this shipping rule for others.',
             'groups'  => 'Briefly describe this shipping group for others.',
             'methods' => 'Briefly describe this shipping method for others.',
         ],

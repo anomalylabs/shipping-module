@@ -3,8 +3,10 @@
 use Anomaly\ShippingModule\Group\Contract\GroupInterface;
 use Anomaly\ShippingModule\Method\MethodCollection;
 use Anomaly\ShippingModule\Origin\Contract\OriginInterface;
+use Anomaly\ShippingModule\Shippable\Command\GetShippingOptions;
 use Anomaly\ShippingModule\Shippable\Command\GetShippingRates;
 use Anomaly\ShippingModule\Shippable\Contract\ShippableInterface;
+use Anomaly\ShippingModule\Shipping\ShippingCollection;
 use Anomaly\Streams\Platform\Model\EloquentModel;
 use Anomaly\Streams\Platform\Model\Shipping\ShippingShippablesEntryModel;
 
@@ -26,7 +28,18 @@ class ShippableModel extends ShippingShippablesEntryModel implements ShippableIn
      */
     public function methods(array $parameters = [])
     {
-        return $this->dispatch(new GetShippingRates($this->getGroup(), $parameters));
+        return $this->dispatch(new GetShippingRates($this, $parameters));
+    }
+
+    /**
+     * Return the available shipping options.
+     *
+     * @param array $parameters
+     * @return ShippingCollection
+     */
+    public function options(array $parameters)
+    {
+        return $this->dispatch(new GetShippingOptions($this, $parameters));
     }
 
     /**
