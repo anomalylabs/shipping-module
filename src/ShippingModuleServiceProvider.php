@@ -51,11 +51,44 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
                 return $this->morphOne(ShippableModel::class, 'item', 'item_type');
             }
         );
+
         $model->bind(
             'get_shippable',
             function () {
                 /* @var EloquentModel $this */
                 return $this->shippable()->first();
+            }
+        );
+
+        $model->bind(
+            'get_shippable_weight',
+            function () {
+                /* @var EloquentModel $this */
+                return $this->weight;
+            }
+        );
+
+        $model->bind(
+            'get_shippable_length',
+            function () {
+                /* @var EloquentModel $this */
+                return $this->length;
+            }
+        );
+
+        $model->bind(
+            'get_shippable_height',
+            function () {
+                /* @var EloquentModel $this */
+                return $this->height;
+            }
+        );
+
+        $model->bind(
+            'get_shippable_width',
+            function () {
+                /* @var EloquentModel $this */
+                return $this->width;
             }
         );
     }

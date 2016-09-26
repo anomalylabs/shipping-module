@@ -29,6 +29,10 @@ class AnomalyModuleShippingCreateRulesStream extends Migration
      * @var array
      */
     protected $assignments = [
+        'name'       => [
+            'required'     => true,
+            'translatable' => true,
+        ],
         'method'     => [
             'required' => true,
         ],

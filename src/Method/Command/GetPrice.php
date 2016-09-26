@@ -1,9 +1,9 @@
 <?php namespace Anomaly\ShippingModule\Method\Command;
 
-use Anomaly\ShippingModule\Group\Contract\GroupInterface;
 use Anomaly\ShippingModule\Method\Contract\MethodInterface;
 use Anomaly\ShippingModule\Rule\Contract\RuleRepositoryInterface;
 use Anomaly\ShippingModule\Rule\RuleCalculator;
+use Anomaly\ShippingModule\Shippable\Contract\ShippableInterface;
 
 /**
  * Class GetPrice
@@ -16,18 +16,18 @@ class GetPrice
 {
 
     /**
-     * The shipping group.
-     *
-     * @var GroupInterface
-     */
-    protected $group;
-
-    /**
      * The shipping method.
      *
      * @var MethodInterface
      */
     protected $method;
+
+    /**
+     * The shippable instance.
+     *
+     * @var ShippableInterface
+     */
+    protected $shippable;
 
     /**
      * The shipping quote.
@@ -39,15 +39,15 @@ class GetPrice
     /**
      * Create a new GetPrice instance.
      *
-     * @param MethodInterface $method
-     * @param GroupInterface  $group
-     * @param float           $quote
+     * @param MethodInterface    $method
+     * @param ShippableInterface $shippable
+     * @param float              $quote
      */
-    public function __construct(MethodInterface $method, GroupInterface $group, $quote)
+    public function __construct(MethodInterface $method, ShippableInterface $shippable, $quote)
     {
-        $this->group  = $group;
-        $this->quote  = $quote;
-        $this->method = $method;
+        $this->quote     = $quote;
+        $this->method    = $method;
+        $this->shippable = $shippable;
     }
 
     /**
@@ -59,7 +59,7 @@ class GetPrice
      */
     public function handle(RuleRepositoryInterface $rules, RuleCalculator $calculator)
     {
-        if (!$rule = $rules->findByMethodAndGroup($this->method, $this->group)) {
+        if (!$rule = $rules->findByMethodAndGroup($this->method, $this->shippable->getGroup())) {
             return $this->quote;
         }
 

@@ -5,6 +5,7 @@ use Anomaly\ShippingModule\Method\Command\GetPrice;
 use Anomaly\ShippingModule\Method\Command\GetQuote;
 use Anomaly\ShippingModule\Method\Contract\MethodInterface;
 use Anomaly\ShippingModule\Method\Extension\MethodExtension;
+use Anomaly\ShippingModule\Shippable\Contract\ShippableInterface;
 use Anomaly\Streams\Platform\Model\Shipping\ShippingMethodsEntryModel;
 
 /**
@@ -23,20 +24,20 @@ class MethodModel extends ShippingMethodsEntryModel implements MethodInterface
      * @param array $parameters
      * @return float
      */
-    public function quote(array $parameters = [])
+    public function quote(ShippableInterface $shippable, array $parameters = [])
     {
-        return $this->dispatch(new GetQuote($this, $parameters));
+        return $this->dispatch(new GetQuote($this, $shippable, $parameters));
     }
 
     /**
      * Return the shipping price to a group.
      *
-     * @param GroupInterface $group
+     * @param ShippableInterface $shippable
      * @return float
      */
-    public function price(GroupInterface $group, array $parameters = [])
+    public function price(ShippableInterface $shippable, array $parameters = [])
     {
-        return $this->dispatch(new GetPrice($this, $group, $this->quote($parameters)));
+        return $this->dispatch(new GetPrice($this, $shippable, $this->quote($shippable, $parameters)));
     }
 
     /**

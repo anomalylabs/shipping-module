@@ -2,6 +2,7 @@
 
 use Anomaly\ShippingModule\Group\Contract\GroupInterface;
 use Anomaly\ShippingModule\Method\MethodCollection;
+use Anomaly\ShippingModule\Origin\Contract\OriginInterface;
 use Anomaly\ShippingModule\Shippable\Command\GetShippingRates;
 use Anomaly\ShippingModule\Shippable\Contract\ShippableInterface;
 use Anomaly\Streams\Platform\Model\Shipping\ShippingShippablesEntryModel;
@@ -35,5 +36,15 @@ class ShippableModel extends ShippingShippablesEntryModel implements ShippableIn
     public function getGroup()
     {
         return $this->group;
+    }
+
+    /**
+     * Get the related origin.
+     *
+     * @return OriginInterface
+     */
+    public function getOrigin()
+    {
+        return $this->origin;
     }
 }

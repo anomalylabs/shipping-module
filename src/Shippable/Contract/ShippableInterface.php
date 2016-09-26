@@ -2,6 +2,7 @@
 
 use Anomaly\ShippingModule\Group\Contract\GroupInterface;
 use Anomaly\ShippingModule\Method\MethodCollection;
+use Anomaly\ShippingModule\Origin\Contract\OriginInterface;
 use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -36,4 +37,18 @@ interface ShippableInterface extends EntryInterface
      * @return BelongsTo
      */
     public function group();
+
+    /**
+     * Get the related origin.
+     *
+     * @return OriginInterface
+     */
+    public function getOrigin();
+
+    /**
+     * Return the origin relation.
+     *
+     * @return BelongsTo
+     */
+    public function origin();
 }
