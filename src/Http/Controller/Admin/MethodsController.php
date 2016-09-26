@@ -23,12 +23,16 @@ class MethodsController extends AdminController
     /**
      * Display an index of existing entries.
      *
-     * @param MethodTableBuilder $table
+     * @param MethodTableBuilder      $table
+     * @param ZoneRepositoryInterface $zones
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index(MethodTableBuilder $table)
+    public function index(MethodTableBuilder $table, ZoneRepositoryInterface $zones)
     {
-        return $table->render();
+        /* @var ZoneInterface $zone */
+        $zone = $zones->find($this->route->getParameter('zone'));
+
+        return $table->setZone($zone)->render();
     }
 
     /**
