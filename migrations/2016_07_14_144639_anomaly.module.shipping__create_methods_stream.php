@@ -44,7 +44,7 @@ class AnomalyModuleShippingCreateMethodsStream extends Migration
         'zone'        => [
             'required' => true,
         ],
-        'allowed_shipping',
+        'allowed_groups',
         'handling_fee',
         'visible',
     ];

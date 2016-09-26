@@ -55,6 +55,12 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
         ],
         'postal_codes'   => 'anomaly.field_type.tags',
         'cities'         => 'anomaly.field_type.tags',
+        'allowed_groups' => [
+            'type'   => 'anomaly.field_type.multiple',
+            'config' => [
+                'related' => 'Anomaly\ShippingModule\Group\GroupModel',
+            ],
+        ],
         'origin'         => [
             'type'   => 'anomaly.field_type.relationship',
             'config' => [
