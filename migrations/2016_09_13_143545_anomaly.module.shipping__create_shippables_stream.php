@@ -31,7 +31,6 @@ class AnomalyModuleShippingCreateShippablesStream extends Migration
         'item'   => [
             'required' => true,
         ],
-        'shippable',
         'group'  => [
             'required' => true,
         ],

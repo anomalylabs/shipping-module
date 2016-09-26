@@ -28,7 +28,6 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
             ],
         ],
         'item'           => 'anomaly.field_type.polymorphic',
-        'shippable'      => 'anomaly.field_type.boolean',
         'slug'           => [
             'type'   => 'anomaly.field_type.slug',
             'config' => [
@@ -55,12 +54,7 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
             ],
         ],
         'postal_codes'   => 'anomaly.field_type.tags',
-        'allowed_groups' => [
-            'type'   => 'anomaly.field_type.multiple',
-            'config' => [
-                'related' => 'Anomaly\ShippingModule\Group\GroupModel',
-            ],
-        ],
+        'cities'         => 'anomaly.field_type.tags',
         'origin'         => [
             'type'   => 'anomaly.field_type.relationship',
             'config' => [
@@ -79,7 +73,7 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
                 'related' => 'Anomaly\ShippingModule\Group\GroupModel',
             ],
         ],
-        'zone'          => [
+        'zone'           => [
             'type'   => 'anomaly.field_type.relationship',
             'config' => [
                 'related' => 'Anomaly\ShippingModule\Zone\ZoneModel',

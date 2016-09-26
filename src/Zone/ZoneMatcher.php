@@ -19,27 +19,48 @@ class ZoneMatcher
      */
     public function matches(ZoneInterface $zone, array $parameters = [])
     {
-        $country = array_get($parameters, 'country');
-
-        if ($country && $zone->getCountry() && $zone->getCountry() != $country) {
+        if (!$this->applies(array_get($parameters, 'country'), $zone->getCountry())) {
             return false;
         }
 
-        $state = array_get($parameters, 'state');
-
-        if ($state && $zone->getStates() && in_array($state, $zone->getStates())) {
+        if (!$this->applies(array_get($parameters, 'state'), $zone->getStates())) {
             return false;
         }
 
-        $postal = array_get($parameters, 'postal_code');
-
-        if ($postal && $zone->getPostalCodes() && !in_array($postal, $zone->getPostalCodes())) {
+        if (!$this->applies(array_get($parameters, 'postal_code'), $zone->getPostalCodes())) {
             return false;
         }
 
-        $city = array_get($parameters, 'city');
+        if (!$this->applies(array_get($parameters, 'city'), $zone->getCities())) {
+            return false;
+        }
 
-        if ($city && $zone->getCities() && !in_array($city, $zone->getCities())) {
+        return true;
+    }
+
+    /**
+     * Return if a zone applies
+     * based on a parameter value.
+     *
+     * @param $parameter
+     * @param $zone
+     * @return bool
+     */
+    protected function applies($parameter, $zone)
+    {
+        if (!$parameter && !$zone) {
+            return true;
+        }
+
+        if (!$parameter && $zone) {
+            return false;
+        }
+
+        if (is_string($zone) && $parameter && $zone && $parameter != $zone) {
+            return false;
+        }
+
+        if (is_array($zone) && $parameter && $zone && !in_array($parameter, $zone)) {
             return false;
         }
 

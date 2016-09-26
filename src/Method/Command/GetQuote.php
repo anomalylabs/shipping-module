@@ -1,15 +1,15 @@
-<?php namespace Anomaly\ShippingModule\Method;
+<?php namespace Anomaly\ShippingModule\Method\Command;
 
 use Anomaly\ShippingModule\Method\Contract\MethodInterface;
 
 /**
- * Class GetRate
+ * Class GetQuote
  *
  * @link   http://pyrocms.com/
  * @author PyroCMS, Inc. <support@pyrocms.com>
  * @author Ryan Thompson <ryan@pyrocms.com>
  */
-class GetRate
+class GetQuote
 {
 
     /**
@@ -27,9 +27,10 @@ class GetRate
     protected $parameters;
 
     /**
-     * Create a new GetRate instance.
+     * Create a new GetQuote instance.
      *
      * @param MethodInterface $method
+     * @param array           $parameters
      */
     public function __construct(MethodInterface $method, array $parameters)
     {
@@ -37,10 +38,15 @@ class GetRate
         $this->parameters = $parameters;
     }
 
+    /**
+     * Handle the command.
+     *
+     * @throws \Exception
+     */
     public function handle()
     {
-        $extension = $this->method->getExtension();
-
-        $extension->rate($parameters);
+        return $this->method
+            ->extension()
+            ->quote($this->parameters);
     }
 }

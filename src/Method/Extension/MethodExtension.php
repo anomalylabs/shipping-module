@@ -8,10 +8,9 @@ use Anomaly\Streams\Platform\Addon\Extension\Extension;
 /**
  * Class MethodExtension
  *
- * @link          http://pyrocms.com/
- * @author        PyroCMS, Inc. <support@pyrocms.com>
- * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\ShippingModule\Method\Extension
+ * @link   http://pyrocms.com/
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Ryan Thompson <ryan@pyrocms.com>
  */
 class MethodExtension extends Extension
 {
@@ -35,52 +34,13 @@ class MethodExtension extends Extension
     }
 
     /**
-     * Return if the order is supported or not.
-     *
-     * @param MethodInterface $method
-     * @param OrderInterface  $order
-     */
-    public function supported(OrderInterface $order)
-    {
-        $countries = $this->method->getAllowedCountries();
-        $types     = $this->method->getAllowedProductTypes();
-        $groups    = $this->method->getAllowedCustomerGroups();
-
-        $items    = $order->getItems();
-        $customer = $order->getCustomer();
-
-        if ($countries && !in_array($order->getShippingCountry(), $countries)) {
-            return false;
-        }
-
-        if ($customer && $groups->count() && !$customer->hasAnyGroup($groups)) {
-            return false;
-        }
-
-        $unsupported = $items->filter(
-            function (ItemInterface $item) use ($types) {
-
-                $product = $item->getProduct();
-
-                return $types->has($product->getAttribute('type_id'));
-            }
-        );
-
-        if ($unsupported->count()) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Return a shipping rate.
+     * Return a shipping quote.
      *
      * @param array $parameters
-     * @throws \Exception
      * @return float
+     * @throws \Exception
      */
-    public function rate(array $parameters)
+    public function quote(array $parameters = [])
     {
         throw new \Exception(__CLASS__ . "must implement " . __METHOD__);
     }

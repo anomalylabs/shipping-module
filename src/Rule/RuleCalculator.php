@@ -1,5 +1,7 @@
 <?php namespace Anomaly\ShippingModule\Rule;
 
+use Anomaly\ShippingModule\Rule\Contract\RuleInterface;
+
 class RuleCalculator
 {
 
@@ -23,25 +25,47 @@ class RuleCalculator
     /**
      * Calculate the rule adjustment.
      *
+     * @param RuleInterface $rule
+     * @param               $value
      * @return float
      */
-    public function calculate()
+    public function calculate(RuleInterface $rule, $value)
     {
-        $modification = $this->modifier->getValue();
+        $modification = $rule->getAdjustment();
 
-        $delta = $value->clean($modification);
+        $delta = $this->value->clean($modification);
 
-        if ($value->isPercentage($modification)) {
-            if ($value->isSubtraction($modification)) {
-                $result = floatval($this->value - ($this->value * ($delta / 100)));
+        if ($this->value->isPercentage($modification)) {
+            $delta = floatval($value * ($delta / 100));
+        }
+
+        return floatval($delta);
+    }
+
+    /**
+     * Apply the rule adjustment.
+     *
+     * @param RuleInterface $rule
+     * @param               $value
+     * @return float
+     */
+    public function apply(RuleInterface $rule, $value)
+    {
+        $modification = $rule->getAdjustment();
+
+        $delta = $this->value->clean($modification);
+
+        if ($this->value->isPercentage($modification)) {
+            if ($this->value->isSubtraction($modification)) {
+                $result = floatval($value - ($value * ($delta / 100)));
             } else {
-                $result = floatval($this->value + ($this->value * ($delta / 100)));
+                $result = floatval($value + ($value * ($delta / 100)));
             }
         } else {
-            if ($value->isSubtraction($modification)) {
-                $result = floatval($this->value - $delta);
+            if ($this->value->isSubtraction($modification)) {
+                $result = floatval($value - $delta);
             } else {
-                $result = floatval($this->value + $delta);
+                $result = floatval($value + $delta);
             }
         }
 
