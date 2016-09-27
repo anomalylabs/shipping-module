@@ -6,6 +6,8 @@ use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 use Anomaly\Streams\Platform\Model\EloquentCollection;
 use Anomaly\Streams\Platform\Model\EloquentModel;
 use Anomaly\Streams\Platform\Support\Collection;
+use Illuminate\Cache\CacheManager;
+use Illuminate\Contracts\Cache\Repository;
 
 /**
  * Class ShippingModuleServiceProvider
@@ -17,6 +19,15 @@ use Anomaly\Streams\Platform\Support\Collection;
  */
 class ShippingModuleServiceProvider extends AddonServiceProvider
 {
+
+    /**
+     * The addon plugins.
+     *
+     * @var array
+     */
+    protected $plugins = [
+        'Anomaly\ShippingModule\ShippingModulePlugin',
+    ];
 
     /**
      * The addon bindings.
@@ -43,7 +54,7 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
     /**
      * Register the addon.
      *
-     * @param EloquentModel      $model
+     * @param EloquentModel $model
      * @param EloquentCollection $collection
      */
     public function register(EloquentModel $model, EloquentCollection $collection)
@@ -76,10 +87,20 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
 
         $model->bind(
             'get_shippable',
-            function () {
+            function (CacheManager $cache) {
 
-                /* @var EloquentModel $this */
-                return $this->shippable()->first();
+                /* @var Repository $repository */
+                $repository = $cache->driver('array');
+
+                return $repository->remember(
+                    get_class($this) . '_shippable',
+                    5,
+                    function () {
+
+                        /* @var EloquentModel $this */
+                        return $this->shippable()->first();
+                    }
+                );
             }
         );
 
@@ -116,6 +137,15 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
 
                 /* @var EloquentModel $this */
                 return $this->width;
+            }
+        );
+
+        $model->bind(
+            'get_shippable_volume',
+            function () {
+
+                /* @var EloquentModel $this */
+                return $this->shippable_volume * $this->shippable_height * $this->shippable_width;
             }
         );
     }

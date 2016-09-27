@@ -1,4 +1,4 @@
-<?php namespace Anomaly\ShippingModule\Shippable;
+<?php namespace Anomaly\ShippingModule\Shipping;
 
 use Anomaly\ShippingModule\Group\Contract\GroupInterface;
 use Anomaly\ShippingModule\Method\MethodCollection;
@@ -6,13 +6,13 @@ use Anomaly\ShippingModule\Method\MethodResolver;
 use Anomaly\ShippingModule\Zone\ZoneResolver;
 
 /**
- * Class ShippableResolver
+ * Class ShippingResolver
  *
  * @link   http://pyrocms.com/
  * @author PyroCMS, Inc. <support@pyrocms.com>
  * @author Ryan Thompson <ryan@pyrocms.com>
  */
-class ShippableResolver
+class ShippingResolver
 {
 
     /**
@@ -30,9 +30,9 @@ class ShippableResolver
     protected $methods;
 
     /**
-     * Create a new ShippableResolver instance.
+     * Create a new ShippingResolver instance.
      *
-     * @param ZoneResolver   $zones
+     * @param ZoneResolver $zones
      * @param MethodResolver $methods
      */
     public function __construct(ZoneResolver $zones, MethodResolver $methods)
@@ -45,16 +45,16 @@ class ShippableResolver
      * Resolve the available shipping methods.
      *
      * @param GroupInterface $group
-     * @param array          $parameters
+     * @param array $parameters
      * @return MethodCollection|null
      */
-    public function resolve(GroupInterface $group, array $parameters = [])
+    public function resolve(array $parameters = [])
     {
         if (!$zone = $this->zones->resolve($parameters)) {
             return new MethodCollection();
         }
 
-        $methods = $this->methods->resolve($group, $zone);
+        $methods = $this->methods->resolve($zone);
 
         return $methods;
     }

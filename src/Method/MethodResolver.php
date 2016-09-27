@@ -1,6 +1,5 @@
 <?php namespace Anomaly\ShippingModule\Method;
 
-use Anomaly\ShippingModule\Group\Contract\GroupInterface;
 use Anomaly\ShippingModule\Zone\Contract\ZoneInterface;
 
 /**
@@ -16,11 +15,10 @@ class MethodResolver
     /**
      * Resolve available zone methods.
      *
-     * @param GroupInterface $group
-     * @param ZoneInterface  $zone
+     * @param ZoneInterface $zone
      * @return MethodCollection
      */
-    public function resolve(GroupInterface $group, ZoneInterface $zone)
+    public function resolve(ZoneInterface $zone)
     {
         return $zone->getMethods();
     }
