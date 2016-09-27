@@ -1,8 +1,11 @@
 <?php namespace Anomaly\ShippingModule;
 
+use Anomaly\ShippingModule\Shippable\ShippableCollection;
 use Anomaly\ShippingModule\Shippable\ShippableModel;
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
+use Anomaly\Streams\Platform\Model\EloquentCollection;
 use Anomaly\Streams\Platform\Model\EloquentModel;
+use Anomaly\Streams\Platform\Support\Collection;
 use Illuminate\Contracts\Config\Repository;
 
 /**
@@ -41,10 +44,28 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
     /**
      * Register the addon.
      *
-     * @param EloquentModel $model
+     * @param EloquentModel      $model
+     * @param EloquentCollection $collection
      */
-    public function register(EloquentModel $model)
+    public function register(EloquentModel $model, EloquentCollection $collection)
     {
+        $collection->bind(
+            'shippables',
+            function () {
+
+                /* @var Collection $this */
+                return new ShippableCollection(
+                    $this->filter(
+                        function ($item) {
+
+                            /* @var EloquentModel $item */
+                            return $item->shippable;
+                        }
+                    )->all()
+                );
+            }
+        );
+
         $model->bind(
             'shippable',
             function () {
