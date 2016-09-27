@@ -39,6 +39,13 @@ interface MethodInterface extends EntryInterface
     public function adjustment(ShippableInterface $shippable, array $parameters = []);
 
     /**
+     * Get the name.
+     *
+     * @return string
+     */
+    public function getName();
+
+    /**
      * Get the extension.
      *
      * @return MethodExtension

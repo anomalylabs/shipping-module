@@ -1,7 +1,7 @@
-<?php namespace Anomaly\ShippingModule\Shippable\Command;
+<?php namespace Anomaly\ShippingModule\Group\Command;
 
+use Anomaly\ShippingModule\Group\Contract\GroupInterface;
 use Anomaly\ShippingModule\Method\MethodCollection;
-use Anomaly\ShippingModule\Shippable\Contract\ShippableInterface;
 use Anomaly\ShippingModule\Shippable\ShippableResolver;
 
 /**
@@ -15,11 +15,11 @@ class GetShippingMethods
 {
 
     /**
-     * The shippable interface.
+     * The group interface.
      *
-     * @var ShippableInterface
+     * @var GroupInterface
      */
-    protected $shippable;
+    protected $group;
 
     /**
      * The zone parameters.
@@ -31,12 +31,12 @@ class GetShippingMethods
     /**
      * Create a new GetShippingMethods instance.
      *
-     * @param ShippableInterface $shippable
-     * @param array              $parameters
+     * @param GroupInterface $group
+     * @param array          $parameters
      */
-    public function __construct(ShippableInterface $shippable, array $parameters = [])
+    public function __construct(GroupInterface $group, array $parameters = [])
     {
-        $this->shippable  = $shippable;
+        $this->group      = $group;
         $this->parameters = $parameters;
     }
 
@@ -48,6 +48,6 @@ class GetShippingMethods
      */
     public function handle(ShippableResolver $resolver)
     {
-        return $resolver->resolve($this->shippable->getGroup(), $this->parameters);
+        return $resolver->resolve($this->group, $this->parameters);
     }
 }

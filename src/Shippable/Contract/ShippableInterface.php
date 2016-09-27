@@ -84,6 +84,13 @@ interface ShippableInterface extends EntryInterface
     public function getGroup();
 
     /**
+     * Get the related group ID.
+     *
+     * @return int
+     */
+    public function getGroupId();
+
+    /**
      * Return the group relation.
      *
      * @return BelongsTo

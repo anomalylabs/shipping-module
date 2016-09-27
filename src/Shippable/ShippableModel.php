@@ -118,6 +118,16 @@ class ShippableModel extends ShippingShippablesEntryModel implements ShippableIn
     }
 
     /**
+     * Get the related group ID.
+     *
+     * @return int
+     */
+    public function getGroupId()
+    {
+        return $this->group_id;
+    }
+
+    /**
      * Get the related origin.
      *
      * @return OriginInterface

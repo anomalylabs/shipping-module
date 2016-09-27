@@ -52,6 +52,16 @@ class MethodModel extends ShippingMethodsEntryModel implements MethodInterface
     }
 
     /**
+     * Get the name.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
      * Get the extension.
      *
      * @return MethodExtension
