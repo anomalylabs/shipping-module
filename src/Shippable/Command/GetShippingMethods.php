@@ -5,13 +5,13 @@ use Anomaly\ShippingModule\Shippable\Contract\ShippableInterface;
 use Anomaly\ShippingModule\Shipping\ShippingResolver;
 
 /**
- * Class GetShippingRates
+ * Class GetShippingMethods
  *
  * @link   http://pyrocms.com/
  * @author PyroCMS, Inc. <support@pyrocms.com>
  * @author Ryan Thompson <ryan@pyrocms.com>
  */
-class GetShippingRates
+class GetShippingMethods
 {
 
     /**
@@ -29,7 +29,7 @@ class GetShippingRates
     private $parameters;
 
     /**
-     * Create a new GetShippingRates instance.
+     * Create a new GetShippingMethods instance.
      *
      * @param ShippableInterface $shippable
      * @param array              $parameters
