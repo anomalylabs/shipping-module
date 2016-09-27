@@ -6,7 +6,6 @@ use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 use Anomaly\Streams\Platform\Model\EloquentCollection;
 use Anomaly\Streams\Platform\Model\EloquentModel;
 use Anomaly\Streams\Platform\Support\Collection;
-use Illuminate\Contracts\Config\Repository;
 
 /**
  * Class ShippingModuleServiceProvider
@@ -117,15 +116,6 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
 
                 /* @var EloquentModel $this */
                 return $this->width;
-            }
-        );
-
-        $model->bind(
-            'get_shippable_unit_system',
-            function (Repository $config) {
-
-                /* @var EloquentModel $this */
-                return $this->unit_system ?: $config->get('streams::system.unit_system', 'imperial');
             }
         );
     }

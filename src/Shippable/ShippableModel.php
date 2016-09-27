@@ -4,7 +4,6 @@ use Anomaly\ShippingModule\Group\Contract\GroupInterface;
 use Anomaly\ShippingModule\Method\MethodCollection;
 use Anomaly\ShippingModule\Origin\Contract\OriginInterface;
 use Anomaly\ShippingModule\Shippable\Command\GetShippingMethods;
-use Anomaly\ShippingModule\Shippable\Command\GetShippingOptions;
 use Anomaly\ShippingModule\Shippable\Contract\ShippableInterface;
 use Anomaly\Streams\Platform\Model\EloquentModel;
 use Anomaly\Streams\Platform\Model\Shipping\ShippingShippablesEntryModel;
@@ -96,18 +95,6 @@ class ShippableModel extends ShippingShippablesEntryModel implements ShippableIn
         $item = $this->getItem();
 
         return $item->getShippableWeight();
-    }
-
-    /**
-     * Get the item unit system.
-     *
-     * @return string
-     */
-    public function getItemUnitSystem()
-    {
-        $item = $this->getItem();
-
-        return $item->getShippableUnitSystem();
     }
 
     /**

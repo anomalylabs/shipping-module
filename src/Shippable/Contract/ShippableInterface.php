@@ -63,13 +63,6 @@ interface ShippableInterface extends EntryInterface
     public function getItemWeight();
 
     /**
-     * Get the item unit system.
-     *
-     * @return string
-     */
-    public function getItemUnitSystem();
-
-    /**
      * Get the related item.
      *
      * @return EloquentModel
