@@ -28,7 +28,7 @@ class RuleTableBuilder extends TableBuilder
      */
     protected $columns = [
         'group',
-        'adjustment'
+        'adjustment',
     ];
 
     /**

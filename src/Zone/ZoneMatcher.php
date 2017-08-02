@@ -1,5 +1,6 @@
 <?php namespace Anomaly\ShippingModule\Zone;
 
+use Anomaly\CustomersModule\Address\Contract\AddressInterface;
 use Anomaly\ShippingModule\Zone\Contract\ZoneInterface;
 
 /**
@@ -13,25 +14,27 @@ class ZoneMatcher
 {
 
     /**
-     * @param ZoneInterface $zone
-     * @param array         $parameters
+     * Return if a zone matches an address.
+     *
+     * @param ZoneInterface    $zone
+     * @param AddressInterface $address
      * @return bool
      */
-    public function matches(ZoneInterface $zone, array $parameters = [])
+    public function matches(ZoneInterface $zone, AddressInterface $address)
     {
-        if (!$this->applies(array_get($parameters, 'country'), $zone->getCountry())) {
+        if (!$this->applies($address->getCountry(), $zone->getCountry())) {
             return false;
         }
 
-        if (!$this->applies(array_get($parameters, 'state'), $zone->getStates())) {
+        if (!$this->applies($address->getState(), $zone->getStates())) {
             return false;
         }
 
-        if (!$this->applies(array_get($parameters, 'postal_code'), $zone->getPostalCodes())) {
+        if (!$this->applies($address->getPostalCode(), $zone->getPostalCodes())) {
             return false;
         }
 
-        if (!$this->applies(array_get($parameters, 'city'), $zone->getCities())) {
+        if (!$this->applies($address->getCity(), $zone->getCities())) {
             return false;
         }
 

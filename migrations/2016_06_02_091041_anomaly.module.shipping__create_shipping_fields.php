@@ -95,5 +95,6 @@ class AnomalyModuleShippingCreateShippingFields extends Migration
         'state'          => 'anomaly.field_type.state',
         'postal_code'    => 'anomaly.field_type.text',
         'adjustment'     => 'anomaly.field_type.text',
+        'tracking'       => 'anomaly.field_type.text',
     ];
 }

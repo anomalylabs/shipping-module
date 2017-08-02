@@ -1,6 +1,6 @@
 <?php namespace Anomaly\ShippingModule\Shipping;
 
-use Anomaly\ShippingModule\Group\Contract\GroupInterface;
+use Anomaly\CustomersModule\Address\Contract\AddressInterface;
 use Anomaly\ShippingModule\Method\MethodCollection;
 use Anomaly\ShippingModule\Method\MethodResolver;
 use Anomaly\ShippingModule\Zone\ZoneResolver;
@@ -32,7 +32,7 @@ class ShippingResolver
     /**
      * Create a new ShippingResolver instance.
      *
-     * @param ZoneResolver $zones
+     * @param ZoneResolver   $zones
      * @param MethodResolver $methods
      */
     public function __construct(ZoneResolver $zones, MethodResolver $methods)
@@ -44,13 +44,12 @@ class ShippingResolver
     /**
      * Resolve the available shipping methods.
      *
-     * @param GroupInterface $group
-     * @param array $parameters
+     * @param AddressInterface $address
      * @return MethodCollection|null
      */
-    public function resolve(array $parameters = [])
+    public function resolve(AddressInterface $address)
     {
-        if (!$zone = $this->zones->resolve($parameters)) {
+        if (!$zone = $this->zones->resolve($address)) {
             return new MethodCollection();
         }
 

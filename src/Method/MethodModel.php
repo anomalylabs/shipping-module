@@ -19,17 +19,6 @@ class MethodModel extends ShippingMethodsEntryModel implements MethodInterface
 {
 
     /**
-     * Return the shipping quote.
-     *
-     * @param array $parameters
-     * @return float
-     */
-    public function quote(ShippableInterface $shippable, array $parameters = [])
-    {
-        return $this->dispatch(new GetQuote($this, $shippable, $parameters));
-    }
-
-    /**
      * Return the shipping price to a group.
      *
      * @param ShippableInterface $shippable
@@ -38,6 +27,17 @@ class MethodModel extends ShippingMethodsEntryModel implements MethodInterface
     public function price(ShippableInterface $shippable, array $parameters = [])
     {
         return $this->dispatch(new GetPrice($this, $shippable, $this->quote($shippable, $parameters)));
+    }
+
+    /**
+     * Return the shipping quote.
+     *
+     * @param array $parameters
+     * @return float
+     */
+    public function quote(ShippableInterface $shippable, array $parameters = [])
+    {
+        return $this->dispatch(new GetQuote($this, $shippable, $parameters));
     }
 
     /**
@@ -62,16 +62,6 @@ class MethodModel extends ShippingMethodsEntryModel implements MethodInterface
     }
 
     /**
-     * Get the extension.
-     *
-     * @return MethodExtension
-     */
-    public function getExtension()
-    {
-        return $this->extension;
-    }
-
-    /**
      * Return the related extension.
      *
      * @return MethodExtension
@@ -81,5 +71,15 @@ class MethodModel extends ShippingMethodsEntryModel implements MethodInterface
         $extension = $this->getExtension();
 
         return $extension->setMethod($this);
+    }
+
+    /**
+     * Get the extension.
+     *
+     * @return MethodExtension
+     */
+    public function getExtension()
+    {
+        return $this->extension;
     }
 }

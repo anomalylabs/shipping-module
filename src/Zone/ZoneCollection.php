@@ -1,5 +1,6 @@
 <?php namespace Anomaly\ShippingModule\Zone;
 
+use Anomaly\CustomersModule\Address\Contract\AddressInterface;
 use Anomaly\ShippingModule\Zone\Contract\ZoneInterface;
 use Anomaly\Streams\Platform\Entry\EntryCollection;
 
@@ -16,16 +17,18 @@ class ZoneCollection extends EntryCollection
     /**
      * Collect available zones.
      *
-     * @param array $parameters
+     * @param AddressInterface $address
      * @return ZoneInterface|null
      */
-    public function resolve(array $parameters = [])
+    public function resolve(AddressInterface $address)
     {
+        $matcher = new ZoneMatcher();
+
         return $this->first(
-            function ($zone) use ($parameters) {
+            function ($zone) use ($matcher, $address) {
 
                 /* @var ZoneInterface $zone */
-                return (new ZoneMatcher())->matches($zone, $parameters);
+                return $matcher->matches($zone, $address);
             }
         );
     }

@@ -1,10 +1,20 @@
 <?php namespace Anomaly\ShippingModule;
 
-use Anomaly\ShippingModule\Shippable\ShippableCollection;
-use Anomaly\ShippingModule\Shippable\ShippableModel;
+use Anomaly\ShippingModule\Group\Contract\GroupRepositoryInterface;
+use Anomaly\ShippingModule\Group\GroupRepository;
+use Anomaly\ShippingModule\Method\Contract\MethodRepositoryInterface;
+use Anomaly\ShippingModule\Method\MethodModel;
+use Anomaly\ShippingModule\Method\MethodRepository;
+use Anomaly\ShippingModule\Rule\Contract\RuleRepositoryInterface;
+use Anomaly\ShippingModule\Rule\RuleRepository;
+use Anomaly\ShippingModule\Zone\Contract\ZoneRepositoryInterface;
+use Anomaly\ShippingModule\Zone\ZoneModel;
+use Anomaly\ShippingModule\Zone\ZoneRepository;
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 use Anomaly\Streams\Platform\Model\EloquentCollection;
 use Anomaly\Streams\Platform\Model\EloquentModel;
+use Anomaly\Streams\Platform\Model\Shipping\ShippingMethodsEntryModel;
+use Anomaly\Streams\Platform\Model\Shipping\ShippingZonesEntryModel;
 use Anomaly\Streams\Platform\Support\Collection;
 use Illuminate\Cache\CacheManager;
 use Illuminate\Contracts\Cache\Repository;
@@ -26,7 +36,7 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
      * @var array
      */
     protected $plugins = [
-        'Anomaly\ShippingModule\ShippingModulePlugin',
+        ShippingModulePlugin::class,
     ];
 
     /**
@@ -35,8 +45,8 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
      * @var array
      */
     protected $bindings = [
-        'Anomaly\Streams\Platform\Model\Shipping\ShippingZonesEntryModel'   => 'Anomaly\ShippingModule\Zone\ZoneModel',
-        'Anomaly\Streams\Platform\Model\Shipping\ShippingMethodsEntryModel' => 'Anomaly\ShippingModule\Method\MethodModel',
+        ShippingZonesEntryModel::class   => ZoneModel::class,
+        ShippingMethodsEntryModel::class => MethodModel::class,
     ];
 
     /**
@@ -45,10 +55,10 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
      * @var array
      */
     protected $singletons = [
-        'Anomaly\ShippingModule\Rule\Contract\RuleRepositoryInterface'     => 'Anomaly\ShippingModule\Rule\RuleRepository',
-        'Anomaly\ShippingModule\Zone\Contract\ZoneRepositoryInterface'     => 'Anomaly\ShippingModule\Zone\ZoneRepository',
-        'Anomaly\ShippingModule\Group\Contract\GroupRepositoryInterface'   => 'Anomaly\ShippingModule\Group\GroupRepository',
-        'Anomaly\ShippingModule\Method\Contract\MethodRepositoryInterface' => 'Anomaly\ShippingModule\Method\MethodRepository',
+        RuleRepositoryInterface::class   => RuleRepository::class,
+        ZoneRepositoryInterface::class   => ZoneRepository::class,
+        GroupRepositoryInterface::class  => GroupRepository::class,
+        MethodRepositoryInterface::class => MethodRepository::class,
     ];
 
     /**
@@ -101,51 +111,6 @@ class ShippingModuleServiceProvider extends AddonServiceProvider
                         return $this->shippable()->first();
                     }
                 );
-            }
-        );
-
-        $model->bind(
-            'get_shippable_weight',
-            function () {
-
-                /* @var EloquentModel $this */
-                return $this->weight;
-            }
-        );
-
-        $model->bind(
-            'get_shippable_length',
-            function () {
-
-                /* @var EloquentModel $this */
-                return $this->length;
-            }
-        );
-
-        $model->bind(
-            'get_shippable_height',
-            function () {
-
-                /* @var EloquentModel $this */
-                return $this->height;
-            }
-        );
-
-        $model->bind(
-            'get_shippable_width',
-            function () {
-
-                /* @var EloquentModel $this */
-                return $this->width;
-            }
-        );
-
-        $model->bind(
-            'get_shippable_volume',
-            function () {
-
-                /* @var EloquentModel $this */
-                return $this->shippable_volume * $this->shippable_height * $this->shippable_width;
             }
         );
     }

@@ -1,5 +1,6 @@
 <?php namespace Anomaly\ShippingModule\Zone;
 
+use Anomaly\CustomersModule\Address\Contract\AddressInterface;
 use Anomaly\ShippingModule\Zone\Contract\ZoneInterface;
 use Anomaly\ShippingModule\Zone\Contract\ZoneRepositoryInterface;
 
@@ -33,14 +34,14 @@ class ZoneResolver
     /**
      * Resolve available zones.
      *
-     * @param array $parameters
+     * @param AddressInterface $address
      * @return ZoneInterface|null
      */
-    public function resolve(array $parameters = [])
+    public function resolve(AddressInterface $address)
     {
         /* @var ZoneCollection $zones */
         $zones = $this->zones->all();
 
-        return $zones->resolve($parameters);
+        return $zones->resolve($address);
     }
 }

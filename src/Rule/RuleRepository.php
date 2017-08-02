@@ -37,7 +37,7 @@ class RuleRepository extends EntryRepository implements RuleRepositoryInterface
      * Find a method rule by group.
      *
      * @param MethodInterface $method
-     * @param GroupInterface  $group
+     * @param GroupInterface $group
      * @return null|RuleInterface
      */
     public function findByMethodAndGroup(MethodInterface $method, GroupInterface $group)
