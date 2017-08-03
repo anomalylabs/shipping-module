@@ -62,11 +62,6 @@ class ShippingModule extends Module
                 'add_origin',
             ],
         ],
-        'shipments' => [
-            'buttons' => [
-                'new_shipment',
-            ],
-        ],
     ];
 
 }
