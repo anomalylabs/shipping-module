@@ -1,6 +1,6 @@
 <?php namespace Anomaly\ShippingModule\Zone;
 
-use Anomaly\CustomersModule\Address\Contract\AddressInterface;
+use Anomaly\StoreModule\Contract\AddressInterface;
 use Anomaly\ShippingModule\Zone\Contract\ZoneInterface;
 use Anomaly\Streams\Platform\Entry\EntryCollection;
 

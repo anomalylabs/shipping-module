@@ -1,9 +1,9 @@
 <?php namespace Anomaly\ShippingModule\Shipping;
 
-use Anomaly\CustomersModule\Address\Contract\AddressInterface;
 use Anomaly\ShippingModule\Method\MethodCollection;
 use Anomaly\ShippingModule\Method\MethodResolver;
 use Anomaly\ShippingModule\Zone\ZoneResolver;
+use Anomaly\StoreModule\Contract\AddressInterface;
 
 /**
  * Class ShippingResolver
@@ -32,7 +32,7 @@ class ShippingResolver
     /**
      * Create a new ShippingResolver instance.
      *
-     * @param ZoneResolver   $zones
+     * @param ZoneResolver $zones
      * @param MethodResolver $methods
      */
     public function __construct(ZoneResolver $zones, MethodResolver $methods)

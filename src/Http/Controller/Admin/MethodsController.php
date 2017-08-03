@@ -30,7 +30,7 @@ class MethodsController extends AdminController
     public function index(MethodTableBuilder $table, ZoneRepositoryInterface $zones)
     {
         /* @var ZoneInterface $zone */
-        $zone = $zones->find($this->route->getParameter('zone'));
+        $zone = $zones->find($this->route->parameter('zone'));
 
         return $table->setZone($zone)->render();
     }
@@ -65,7 +65,7 @@ class MethodsController extends AdminController
         $extension = $extensions->get($this->request->get('method'));
 
         /* @var ZoneInterface $zone */
-        $zone = $zones->find($this->route->getParameter('zone'));
+        $zone = $zones->find($this->route->parameter('zone'));
 
         return $extension
             ->form()
@@ -83,7 +83,7 @@ class MethodsController extends AdminController
     public function edit(MethodRepositoryInterface $methods)
     {
         /* @var MethodInterface $method */
-        $method = $methods->find($this->route->getParameter('id'));
+        $method = $methods->find($this->route->parameter('id'));
 
         return $method
             ->extension()

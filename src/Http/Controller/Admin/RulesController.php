@@ -26,7 +26,7 @@ class RulesController extends AdminController
     public function index(RuleTableBuilder $table, MethodRepositoryInterface $methods)
     {
         /* @var MethodInterface $method */
-        if ($method = $methods->find($this->route->getParameter('method'))) {
+        if ($method = $methods->find($this->route->parameter('method'))) {
             $table->setMethod($method);
         }
 
@@ -42,7 +42,7 @@ class RulesController extends AdminController
     public function create(RuleFormBuilder $form, MethodRepositoryInterface $methods)
     {
         /* @var MethodInterface $method */
-        if ($method = $methods->find($this->route->getParameter('method'))) {
+        if ($method = $methods->find($this->route->parameter('method'))) {
             $form->setMethod($method);
         }
 
