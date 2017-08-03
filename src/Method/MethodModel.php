@@ -5,7 +5,8 @@ use Anomaly\ShippingModule\Method\Command\GetPrice;
 use Anomaly\ShippingModule\Method\Command\GetQuote;
 use Anomaly\ShippingModule\Method\Contract\MethodInterface;
 use Anomaly\ShippingModule\Method\Extension\MethodExtension;
-use Anomaly\ShippingModule\Shippable\Contract\ShippableInterface;
+use Anomaly\StoreModule\Contract\AddressInterface;
+use Anomaly\StoreModule\Contract\ShippableInterface;
 use Anomaly\Streams\Platform\Model\Shipping\ShippingMethodsEntryModel;
 
 /**
@@ -22,33 +23,36 @@ class MethodModel extends ShippingMethodsEntryModel implements MethodInterface
      * Return the shipping price to a group.
      *
      * @param ShippableInterface $shippable
+     * @param AddressInterface $address
      * @return float
      */
-    public function price(ShippableInterface $shippable, array $parameters = [])
+    public function price(ShippableInterface $shippable, AddressInterface $address)
     {
-        return $this->dispatch(new GetPrice($this, $shippable, $this->quote($shippable, $parameters)));
+        return $this->dispatch(new GetPrice($this, $shippable, $this->quote($shippable, $address)));
     }
 
     /**
      * Return the shipping quote.
      *
-     * @param array $parameters
+     * @param ShippableInterface $shippable
+     * @param AddressInterface $address
      * @return float
      */
-    public function quote(ShippableInterface $shippable, array $parameters = [])
+    public function quote(ShippableInterface $shippable, AddressInterface $address)
     {
-        return $this->dispatch(new GetQuote($this, $shippable, $parameters));
+        return $this->dispatch(new GetQuote($this, $shippable, $address));
     }
 
     /**
      * Return the shipping adjustment.
      *
-     * @param array $parameters
+     * @param ShippableInterface $shippable
+     * @param AddressInterface $address
      * @return float
      */
-    public function adjustment(ShippableInterface $shippable, array $parameters = [])
+    public function adjustment(ShippableInterface $shippable, AddressInterface $address)
     {
-        return $this->dispatch(new GetAdjustment($this, $shippable, $this->quote($shippable, $parameters)));
+        return $this->dispatch(new GetAdjustment($this, $shippable, $this->quote($shippable, $address)));
     }
 
     /**
@@ -59,6 +63,16 @@ class MethodModel extends ShippingMethodsEntryModel implements MethodInterface
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Get the handling fee.
+     *
+     * @return float
+     */
+    public function getHandlingFee()
+    {
+        return $this->handling_fee;
     }
 
     /**

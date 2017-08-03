@@ -3,7 +3,7 @@
 use Anomaly\ShippingModule\Method\Contract\MethodInterface;
 use Anomaly\ShippingModule\Rule\Contract\RuleRepositoryInterface;
 use Anomaly\ShippingModule\Rule\RuleCalculator;
-use Anomaly\ShippingModule\Shippable\Contract\ShippableInterface;
+use Anomaly\StoreModule\Contract\ShippableInterface;
 
 /**
  * Class GetAdjustment
@@ -39,9 +39,9 @@ class GetAdjustment
     /**
      * Create a new GetAdjustment instance.
      *
-     * @param MethodInterface    $method
+     * @param MethodInterface $method
      * @param ShippableInterface $shippable
-     * @param float              $quote
+     * @param float $quote
      */
     public function __construct(MethodInterface $method, ShippableInterface $shippable, $quote)
     {
@@ -54,12 +54,12 @@ class GetAdjustment
      * Handle the command.
      *
      * @param RuleRepositoryInterface $rules
-     * @param RuleCalculator          $calculator
+     * @param RuleCalculator $calculator
      * @return float
      */
     public function handle(RuleRepositoryInterface $rules, RuleCalculator $calculator)
     {
-        if (!$rule = $rules->findByMethodAndGroup($this->method, $this->shippable->getGroup())) {
+        if (!$rule = $rules->findByMethodAndGroup($this->method, $this->shippable->getShippingGroup())) {
             return $this->quote;
         }
 

@@ -2,6 +2,7 @@
 
 use Anomaly\ShippingModule\Method\MethodCollection;
 use Anomaly\ShippingModule\Method\MethodResolver;
+use Anomaly\ShippingModule\Zone\Contract\ZoneInterface;
 use Anomaly\ShippingModule\Zone\ZoneResolver;
 use Anomaly\StoreModule\Contract\AddressInterface;
 
@@ -49,11 +50,17 @@ class ShippingResolver
      */
     public function resolve(AddressInterface $address)
     {
-        if (!$zone = $this->zones->resolve($address)) {
-            return new MethodCollection();
+        $methods = new MethodCollection();
+
+        if (!$zones = $this->zones->resolve($address)) {
+            return $methods;
         }
 
-        $methods = $this->methods->resolve($zone);
+        foreach ($zones as $zone) {
+
+            /* @var ZoneInterface $zone */
+            $methods = $methods->merge($this->methods->resolve($zone));
+        }
 
         return $methods;
     }

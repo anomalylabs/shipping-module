@@ -1,7 +1,8 @@
 <?php namespace Anomaly\ShippingModule\Method\Command;
 
 use Anomaly\ShippingModule\Method\Contract\MethodInterface;
-use Anomaly\ShippingModule\Shippable\Contract\ShippableInterface;
+use Anomaly\StoreModule\Contract\AddressInterface;
+use Anomaly\StoreModule\Contract\ShippableInterface;
 
 /**
  * Class GetQuote
@@ -28,24 +29,24 @@ class GetQuote
     protected $shippable;
 
     /**
-     * The quote parameters.
+     * The quote address.
      *
-     * @var array
+     * @var AddressInterface
      */
-    protected $parameters;
+    protected $address;
 
     /**
      * Create a new GetQuote instance.
      *
-     * @param MethodInterface    $method
+     * @param MethodInterface $method
      * @param ShippableInterface $shippable
-     * @param array              $parameters
+     * @param AddressInterface $address
      */
-    public function __construct(MethodInterface $method, ShippableInterface $shippable, array $parameters)
+    public function __construct(MethodInterface $method, ShippableInterface $shippable, AddressInterface $address)
     {
-        $this->method     = $method;
-        $this->shippable  = $shippable;
-        $this->parameters = $parameters;
+        $this->method    = $method;
+        $this->address   = $address;
+        $this->shippable = $shippable;
     }
 
     /**
@@ -57,6 +58,6 @@ class GetQuote
     {
         return $this->method
             ->extension()
-            ->quote($this->shippable, $this->parameters);
+            ->quote($this->shippable, $this->address);
     }
 }

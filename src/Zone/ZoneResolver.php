@@ -1,8 +1,7 @@
 <?php namespace Anomaly\ShippingModule\Zone;
 
-use Anomaly\StoreModule\Contract\AddressInterface;
-use Anomaly\ShippingModule\Zone\Contract\ZoneInterface;
 use Anomaly\ShippingModule\Zone\Contract\ZoneRepositoryInterface;
+use Anomaly\StoreModule\Contract\AddressInterface;
 
 /**
  * Class ZoneResolver
@@ -35,7 +34,7 @@ class ZoneResolver
      * Resolve available zones.
      *
      * @param AddressInterface $address
-     * @return ZoneInterface|null
+     * @return ZoneCollection|null
      */
     public function resolve(AddressInterface $address)
     {

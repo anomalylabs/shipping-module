@@ -3,6 +3,7 @@
 use Anomaly\ShippingModule\Method\Contract\MethodInterface;
 use Anomaly\ShippingModule\Method\Extension\Command\GetFormBuilder;
 use Anomaly\ShippingModule\Method\Extension\Form\MethodExtensionFormBuilder;
+use Anomaly\StoreModule\Contract\AddressInterface;
 use Anomaly\StoreModule\Contract\ShippableInterface;
 use Anomaly\Streams\Platform\Addon\Extension\Extension;
 
@@ -42,7 +43,7 @@ class MethodExtension extends Extension
      * @return float
      * @throws \Exception
      */
-    public function quote(ShippableInterface $shippable, array $parameters = [])
+    public function quote(ShippableInterface $shippable, AddressInterface $address)
     {
         throw new \Exception(__CLASS__ . "must implement " . __METHOD__);
     }

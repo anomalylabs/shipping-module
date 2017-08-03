@@ -12,7 +12,7 @@
     <ul class="nav nav-pills nav-stacked">
         {% for method in methods %}
             <li class="nav-item">
-                <a href="{{ url_to('admin/shipping/methods/' ~ request_route().getParameter('zone') ~ '/create?method=' ~ method.namespace) }}"
+                <a href="{{ url_to('admin/shipping/methods/' ~ request_route().parameter('zone') ~ '/create?method=' ~ method.namespace) }}"
                    class="nav-link">
                     <strong>{{ trans(method.getTitle()) }}</strong>
                     <br>
