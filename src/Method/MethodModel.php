@@ -6,7 +6,7 @@ use Anomaly\ShippingModule\Method\Command\GetQuote;
 use Anomaly\ShippingModule\Method\Contract\MethodInterface;
 use Anomaly\ShippingModule\Method\Extension\MethodExtension;
 use Anomaly\StoreModule\Contract\AddressInterface;
-use Anomaly\StoreModule\Contract\ShippableInterface;
+use Anomaly\ShippingModule\Shipping\Contract\ShippableInterface;
 use Anomaly\Streams\Platform\Model\Shipping\ShippingMethodsEntryModel;
 
 /**

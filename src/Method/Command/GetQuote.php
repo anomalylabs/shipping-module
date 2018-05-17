@@ -2,7 +2,7 @@
 
 use Anomaly\ShippingModule\Method\Contract\MethodInterface;
 use Anomaly\StoreModule\Contract\AddressInterface;
-use Anomaly\StoreModule\Contract\ShippableInterface;
+use Anomaly\ShippingModule\Shipping\Contract\ShippableInterface;
 
 /**
  * Class GetQuote

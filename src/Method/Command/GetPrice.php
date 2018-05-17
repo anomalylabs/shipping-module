@@ -3,7 +3,7 @@
 use Anomaly\ShippingModule\Method\Contract\MethodInterface;
 use Anomaly\ShippingModule\Rule\Contract\RuleRepositoryInterface;
 use Anomaly\ShippingModule\Rule\RuleCalculator;
-use Anomaly\StoreModule\Contract\ShippableInterface;
+use Anomaly\ShippingModule\Shipping\Contract\ShippableInterface;
 
 /**
  * Class GetPrice
